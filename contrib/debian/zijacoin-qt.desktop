@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Zijacoin
+Comment=Zijacoin P2P Cryptocurrency
+Comment[fr]=Zijacoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Zijacoin, eşten eşe kriptografik sanal para birimi
+Exec=zijacoin-qt %u
+Terminal=false
+Type=Application
+Icon=zijacoin128
+MimeType=x-scheme-handler/zijacoin;
+Categories=Office;Finance;
