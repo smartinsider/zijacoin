@@ -41,12 +41,12 @@ public:
 
         // PoSV
         bnProofOfStakeLimit = CBigNum(~uint256(0) >> 20);
-        nLastProofOfWorkHeight = 490000 - 1;
+        nLastProofOfWorkHeight = 5000 - 1;
         nStakeMinAge = 8 * 60 * 60; // 8 hours
         nStakeMaxAge = 45 * 24 *  60 * 60; // 45 days
 
-        const char* pszTimestamp = "July 26st 2018 was just perfect day...";
-        CTransaction txNew(1532552400);
+        const char* pszTimestamp = "August 24st 2018 3:07 AM. Amsterdam. All are sleping and I am working :)";
+        CTransaction txNew(1535072820);
         txNew.nVersion = 1;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -57,7 +57,7 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1532552400;
+        genesis.nTime    = 1535072820;
         genesis.nBits    = 0x1e0ffff0;
         genesis.nNonce   = 3207966;
 
@@ -68,7 +68,7 @@ public:
 
 
 
-    if(false)
+    if(true)
     {
         printf("Searching for genesis block...\n");
         // This will figure out a valid hash and Nonce if you're
