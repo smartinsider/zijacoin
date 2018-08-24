@@ -68,7 +68,7 @@ public:
 
 
 
-    if(true)
+    if(false)
     {
         printf("Searching for genesis block...\n");
         // This will figure out a valid hash and Nonce if you're
