@@ -103,7 +103,7 @@ public:
 
 
         assert(hashGenesisBlock == uint256("0xbe3ccf25f79bc3c8832bde8c0081cc28c88736f91ae9648879af9ae31a470ef8"));
-        assert(genesis.hashMerkleRoot == uint256("0x9c8a72c61a61010fbc59a68a8ed1a98dd5f0dd61c41506e5794f64baa49ac013"));
+        assert(genesis.hashMerkleRoot == uint256("0xbc921214f9688340097ea0bf9fdf912e4fe5b7f3d3cb5cf2c863fc9280704138"));
 
         vSeeds.push_back(CDNSSeedData("node1.zija.icu", "node1.zija.icu"));
         vSeeds.push_back(CDNSSeedData("node2.zija.icu", "node2.zija.icu"));
