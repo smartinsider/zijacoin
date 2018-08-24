@@ -45,8 +45,8 @@ public:
         nStakeMinAge = 8 * 60 * 60; // 8 hours
         nStakeMaxAge = 45 * 24 *  60 * 60; // 45 days
 
-        const char* pszTimestamp = "August 24st 2018 3:07 AM. Amsterdam. All are sleping and I am working :)";
-        CTransaction txNew(1535072820);
+        const char* pszTimestamp = "July 26st 2018 was just perfect day...";
+        CTransaction txNew(1532552400);
         txNew.nVersion = 1;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -57,9 +57,9 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1535072820;
+        genesis.nTime    = 1532552400;
         genesis.nBits    = 0x1e0ffff0;
-        genesis.nNonce   = 4024044;
+        genesis.nNonce   = 3207966;
 
         hashGenesisBlock = genesis.GetHash();
 
@@ -102,10 +102,9 @@ public:
     }
 
 
-        assert(hashGenesisBlock == uint256("0x9eeef9955eefcb003bfa27065f4a419dff9e40959bfa0aae9a0c7644e77aabed"));
-        assert(genesis.hashMerkleRoot == uint256("0xce803a4138bed3fed55f4c7881f712c42ea7e85ca4e192d13dfcb6b875615739"));
+        assert(hashGenesisBlock == uint256("0xbe3ccf25f79bc3c8832bde8c0081cc28c88736f91ae9648879af9ae31a470ef8"));
+        assert(genesis.hashMerkleRoot == uint256("0x9c8a72c61a61010fbc59a68a8ed1a98dd5f0dd61c41506e5794f64baa49ac013"));
 
-        vSeeds.push_back(CDNSSeedData("zija.icu", "seed0.zija.icu"));
         vSeeds.push_back(CDNSSeedData("node1.zija.icu", "node1.zija.icu"));
         vSeeds.push_back(CDNSSeedData("node2.zija.icu", "node2.zija.icu"));
         vSeeds.push_back(CDNSSeedData("node3.zija.icu", "node3.zija.icu"));
@@ -166,11 +165,11 @@ public:
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
         // CTransaction txGenesis = genesis.vtx[0];
-        genesis.nTime = 1535072820;
+        genesis.nTime = 1532552400;
         // genesis.vtx[0] = txGenesis;
-        genesis.nNonce = 4024044;
+        genesis.nNonce = 3207966;
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x9eeef9955eefcb003bfa27065f4a419dff9e40959bfa0aae9a0c7644e77aabed"));
+        assert(hashGenesisBlock == uint256("0xbe3ccf25f79bc3c8832bde8c0081cc28c88736f91ae9648879af9ae31a470ef8"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -201,13 +200,13 @@ public:
         nSubsidyHalvingInterval = 150;
         bnProofOfWorkLimit = bnProofOfStakeLimit = CBigNum(~uint256(0) >> 1);
         nLastProofOfWorkHeight = 350 - 1;
-        genesis.nTime = 1535072820;
+        genesis.nTime = 1532552400;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 4024044;
+        genesis.nNonce = 3207966;
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 56444;
         strDataDir = "regtest";
-        assert(hashGenesisBlock == uint256("0x9eeef9955eefcb003bfa27065f4a419dff9e40959bfa0aae9a0c7644e77aabed"));
+        assert(hashGenesisBlock == uint256("0xbe3ccf25f79bc3c8832bde8c0081cc28c88736f91ae9648879af9ae31a470ef8"));
 
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
     }
