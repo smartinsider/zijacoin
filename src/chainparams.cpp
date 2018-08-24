@@ -41,7 +41,7 @@ public:
 
         // PoSV
         bnProofOfStakeLimit = CBigNum(~uint256(0) >> 20);
-        nLastProofOfWorkHeight = 5000 - 1;
+        nLastProofOfWorkHeight = 12894 - 1;
         nStakeMinAge = 8 * 60 * 60; // 8 hours
         nStakeMaxAge = 45 * 24 *  60 * 60; // 45 days
 
