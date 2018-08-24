@@ -1261,7 +1261,7 @@ int64_t GetBlockValue(int nHeight, int64_t nFees)
         // Premine: First 10 block are 115200000 ZIJA (8% of the total coin)
         nSubsidy = 115200000 * COIN;
     } else {
-        nSubsidy = nSubsidy = (490000 - nHeight) / (490000 / 1000) * COIN;
+        nSubsidy = (490000 - nHeight) / (490000 / 1000) * COIN;
     }
 
     return nSubsidy + nFees;
