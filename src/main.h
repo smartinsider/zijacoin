@@ -74,7 +74,7 @@ static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;
 /** Timeout in seconds before considering a block download peer unresponsive. */
 static const unsigned int BLOCK_DOWNLOAD_TIMEOUT = 60;
 /** Start checking POW after block 44877 http://live.zija.icu/block/4253e7618d40aded00d11b664e874245ae74d55b976f4ac087d1a9db2f5f3cda */
-static const int64_t CHECK_POW_FROM_NTIME = 1532552400;
+static const int64_t CHECK_POW_FROM_NTIME = 1535072820;
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
 #else
@@ -95,7 +95,7 @@ static const unsigned char REJECT_HIGHFEE = 0x44;
 // PoSV
 inline int64_t PastDrift(int64_t nTime)   { return nTime - 2 * 60 * 60; } // up to 2 hours from the past
 inline int64_t FutureDrift(int64_t nTime) { return nTime + 2 * 60 * 60; } // up to 2 hours from the future
-static const int64_t COIN_YEAR_REWARD = 69 * CENT; // 69% per year
+static const int64_t COIN_YEAR_REWARD = 51 * CENT; // 51% per year
 
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;

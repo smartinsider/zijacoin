@@ -34,8 +34,8 @@ public:
         pchMessageStart[2] = 0xb6;
         pchMessageStart[3] = 0xdb;
         vAlertPubKey = ParseHex("0437b4b0f5d356f205c17ffff6c46dc9ec4680ffb7f8a9a4e6eebcebd5f340d01df00ef304faea7779d97d8f1addbe1e87308ea237aae3ead96e0a736c7e9477a1");
-        nDefaultPort = 45591;
-        nRPCPort = 45592;
+        nDefaultPort = 30091;
+        nRPCPort = 30092;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
         nSubsidyHalvingInterval = 210000;
 
@@ -59,7 +59,7 @@ public:
         genesis.nVersion = 1;
         genesis.nTime    = 1535072820;
         genesis.nBits    = 0x1e0ffff0;
-        genesis.nNonce   = 3207966;
+        genesis.nNonce   = 4024044;
 
         hashGenesisBlock = genesis.GetHash();
 
@@ -102,8 +102,8 @@ public:
     }
 
 
-        assert(hashGenesisBlock == uint256("0xbe3ccf25f79bc3c8832bde8c0081cc28c88736f91ae9648879af9ae31a470ef8"));
-        assert(genesis.hashMerkleRoot == uint256("0xbc921214f9688340097ea0bf9fdf912e4fe5b7f3d3cb5cf2c863fc9280704138"));
+        assert(hashGenesisBlock == uint256("0x9eeef9955eefcb003bfa27065f4a419dff9e40959bfa0aae9a0c7644e77aabed"));
+        assert(genesis.hashMerkleRoot == uint256("0xce803a4138bed3fed55f4c7881f712c42ea7e85ca4e192d13dfcb6b875615739"));
 
         vSeeds.push_back(CDNSSeedData("zija.icu", "seed0.zija.icu"));
         vSeeds.push_back(CDNSSeedData("node1.zija.icu", "node1.zija.icu"));
@@ -166,11 +166,11 @@ public:
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
         // CTransaction txGenesis = genesis.vtx[0];
-        genesis.nTime = 1532552400;
+        genesis.nTime = 1535072820;
         // genesis.vtx[0] = txGenesis;
-        genesis.nNonce = 3207966;
+        genesis.nNonce = 4024044;
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0xbe3ccf25f79bc3c8832bde8c0081cc28c88736f91ae9648879af9ae31a470ef8"));
+        assert(hashGenesisBlock == uint256("0x9eeef9955eefcb003bfa27065f4a419dff9e40959bfa0aae9a0c7644e77aabed"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -201,13 +201,13 @@ public:
         nSubsidyHalvingInterval = 150;
         bnProofOfWorkLimit = bnProofOfStakeLimit = CBigNum(~uint256(0) >> 1);
         nLastProofOfWorkHeight = 350 - 1;
-        genesis.nTime = 1532552400;
+        genesis.nTime = 1535072820;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 3207966;
+        genesis.nNonce = 4024044;
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 56444;
         strDataDir = "regtest";
-        assert(hashGenesisBlock == uint256("0xbe3ccf25f79bc3c8832bde8c0081cc28c88736f91ae9648879af9ae31a470ef8"));
+        assert(hashGenesisBlock == uint256("0x9eeef9955eefcb003bfa27065f4a419dff9e40959bfa0aae9a0c7644e77aabed"));
 
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
     }

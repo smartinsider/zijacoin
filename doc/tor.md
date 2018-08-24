@@ -47,11 +47,11 @@ reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equiv
 config file):
 
 	HiddenServiceDir /var/lib/tor/zijacoin-service/
-	HiddenServicePort 45591 127.0.0.1:45591
+	HiddenServicePort 30091 127.0.0.1:30091
 	HiddenServicePort 46591 127.0.0.1:46591
 
 The directory can be different of course, but (both) port numbers should be equal to
-your zijacoind's P2P listen port (45591 by default).
+your zijacoind's P2P listen port (30091 by default).
 
 	-externalip=X   You can tell zijacoin about its publicly reachable address using
 	                this option, and this can be a .onion address. Given the above
@@ -81,7 +81,7 @@ specify:
 
 	./zijacoind ... -discover
 
-and open port 45591 on your firewall (or use -upnp).
+and open port 30091 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:

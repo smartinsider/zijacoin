@@ -3656,8 +3656,8 @@ Address: %4
     </message>
     <message>
         <location line="+15"/>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</translation>
     </message>
     <message>
         <location line="+83"/>
@@ -3766,8 +3766,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Zijacoin Alert&quot; support@z
     </message>
     <message>
         <location line="+3"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -4246,8 +4246,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Zijacoin Alert&quot; support@z
     </message>
     <message>
         <location line="+2"/>
-        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
-        <translation>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
+        <translation>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</translation>
     </message>
     <message>
         <location line="+6"/>

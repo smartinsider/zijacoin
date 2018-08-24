@@ -2678,8 +2678,8 @@ Address: %4
         <translation>Komut satırı ve JSON-RPC komutlarını kabul et</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>&lt;port&gt; üzerinde JSON-RPC ye bağlan (varsayılan: 45592 veya testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>&lt;port&gt; üzerinde JSON-RPC ye bağlan (varsayılan: 30092 veya testnet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2770,8 +2770,8 @@ for example: alertnotify=echo %%s | mail -s "Zijacoin Alert" support@zija.icu
         <translation>Bu kipte -genproclimit kaç sayıda bloğun anında oluşturulduğunu kontrol eder.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>JSON-RPC bağlantılarını &lt;port&gt; üzerinde dinle (varsayılan: 45592 veya tesnet: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>JSON-RPC bağlantılarını &lt;port&gt; üzerinde dinle (varsayılan: 30092 veya tesnet: 46592)</translation>
     </message>
     <message>
         <source>Log transaction priority and fee per kB when staking blocks (default: 0)</source>
@@ -3150,8 +3150,8 @@ for example: alertnotify=echo %%s | mail -s "Zijacoin Alert" support@zija.icu
         <translation>İmza arabelleğinin boyutunu &lt;n&gt; unsurla sınırla (varsayılan: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
-        <translation>Bağlantıları &lt;port&gt; üzerinde dinle (varsayılan: 45591 veya tesnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
+        <translation>Bağlantıları &lt;port&gt; üzerinde dinle (varsayılan: 30091 veya tesnet: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

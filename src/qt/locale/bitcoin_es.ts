@@ -2698,8 +2698,8 @@ Dirección: %4
         <translation>Aceptar comandos consola y JSON-RPC</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Escuchar conexiones JSON-RPC en &lt;port&gt; (Por defecto: 45592 o testnet: 46592) </translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Escuchar conexiones JSON-RPC en &lt;port&gt; (Por defecto: 30092 o testnet: 46592) </translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2787,8 +2787,8 @@ Se recomienda también establecer alertnotify para recibir notificaciones de pro
         <translation>En este modo -genproclimit controla cuántos bloques se generan de inmediato.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Escuchar conexiones JSON-RPC en &lt;puerto&gt; (predeterminado: 45592 o testnet: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Escuchar conexiones JSON-RPC en &lt;puerto&gt; (predeterminado: 30092 o testnet: 46592)</translation>
     </message>
     <message>
         <source>Log transaction priority and fee per kB when staking blocks (default: 0)</source>
@@ -3171,8 +3171,8 @@ Se recomienda también establecer alertnotify para recibir notificaciones de pro
         <translation>Limitar tamaño de la cache de firmas a &lt;n&gt; entradas (predeterminado: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
-        <translation>Escuchar conexiones en &lt;puerto&gt; (predeterminado: 45591 o testnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
+        <translation>Escuchar conexiones en &lt;puerto&gt; (predeterminado: 30091 o testnet: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
