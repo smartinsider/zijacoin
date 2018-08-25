@@ -2638,8 +2638,8 @@ Adresa: %4
         <translation>Akceptovat příkazy z příkazové řádky a přes JSON-RPC</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Připojit se k JSON RPC na &lt;port&gt; (výchozí: 30092 nebo testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Připojit se k JSON RPC na &lt;port&gt; (výchozí: 45592 nebo testnet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2726,8 +2726,8 @@ například: alertnotify=echo %%s | mail -s "Zijacoin Alert" support@zija.icu
         <translation>V tomto módu -genproclimit určuje, kolik bloků je vygenerováno okamžitě.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Čekat na JSON RPC spojení na &lt;portu&gt; (výchozí: 30092 nebo testnet: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Čekat na JSON RPC spojení na &lt;portu&gt; (výchozí: 45592 nebo testnet: 46592)</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
@@ -3082,8 +3082,8 @@ například: alertnotify=echo %%s | mail -s "Zijacoin Alert" support@zija.icu
         <translation>Omezit velikost vyrovnávací paměti pro podpisy na &lt;n&gt; položek (výchozí: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
-        <translation>Čekat na spojení na &lt;portu&gt; (výchozí: 30091 nebo testnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
+        <translation>Čekat na spojení na &lt;portu&gt; (výchozí: 45591 nebo testnet: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

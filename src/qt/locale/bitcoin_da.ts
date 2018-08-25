@@ -2647,8 +2647,8 @@ Adresse: %4
         <translation>Acceptér kommandolinje- og JSON-RPC-kommandoer</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Forbind til JSON-RPC på &lt;port&gt; (standard: 30092 or testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Forbind til JSON-RPC på &lt;port&gt; (standard: 45592 or testnet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2739,8 +2739,8 @@ for example: alertnotify=echo %%s | mail -s "Zijacoin Alert" support@zija.icu
         <translation>I denne tilstand styrer -genproclimit hvor mange blokke, der genereres med det samme.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Lyt efter JSON-RPC-forbindelser på &lt;port&gt; (standard: 30092 eller testnet: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Lyt efter JSON-RPC-forbindelser på &lt;port&gt; (standard: 45592 eller testnet: 46592)</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
@@ -3099,8 +3099,8 @@ for example: alertnotify=echo %%s | mail -s "Zijacoin Alert" support@zija.icu
         <translation>Begræns størrelsen på signaturcache til &lt;n&gt; indgange (standard: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
-        <translation>Lyt efter forbindelser på &lt;port&gt; (standard: 30091 eller testnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
+        <translation>Lyt efter forbindelser på &lt;port&gt; (standard: 45591 eller testnet: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

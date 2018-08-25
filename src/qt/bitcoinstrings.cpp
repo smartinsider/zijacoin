@@ -79,7 +79,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", ""
 "In this mode -genproclimit controls how many blocks are generated "
 "immediately."),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
-"Listen for JSON-RPC connections on <port> (default: 30092 or testnet: 46592)"),
+"Listen for JSON-RPC connections on <port> (default: 45592 or testnet: 46592)"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Log transaction priority and fee per kB when staking blocks (default: 0)"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
@@ -149,7 +149,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Cannot write default address"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Clear list of wallet transactions (diagnostic tool; implies -rescan)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Connect only to the specified node(s)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Connect through SOCKS proxy"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Connect to JSON-RPC on <port> (default: 30092 or testnet: 46592)"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Connect to JSON-RPC on <port> (default: 45592 or testnet: 46592)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Connect to a node to retrieve peer addresses, and disconnect"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Connection options:"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Corrupted block database detected"),
@@ -205,7 +205,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Keep at most <n> unconnectable blocks in memo
 QT_TRANSLATE_NOOP("bitcoin-core", "Keep at most <n> unconnectable transactions in memory (default: %u)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Limit size of signature cache to <n> entries (default: 50000)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "List commands"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Listen for connections on <port> (default: 30091 or testnet: 46591)"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Listen for connections on <port> (default: 45591 or testnet: 46591)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Loading addresses..."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Loading block index..."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Loading wallet..."),

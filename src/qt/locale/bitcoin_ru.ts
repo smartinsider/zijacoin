@@ -2697,8 +2697,8 @@ Address: %4
         <translation>Принимать командную строку и команды JSON-RPC</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Подключить в json-RPC на &lt;port&gt; (по умолчанию: 30092 или тестовом режиме: 46592) </translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Подключить в json-RPC на &lt;port&gt; (по умолчанию: 45592 или тестовом режиме: 46592) </translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2788,8 +2788,8 @@ rpcpassword=%s
         <translation>В этом режиме -genproclimit определяет, сколько блоков генерируется немедленно.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Слушать для json-RPC для подключения по &lt;port&gt; (по умолчанию: 30092 или тестовом режиме: 46592) </translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Слушать для json-RPC для подключения по &lt;port&gt; (по умолчанию: 45592 или тестовом режиме: 46592) </translation>
     </message>
     <message>
         <source>Log transaction priority and fee per kB when staking blocks (default: 0)</source>
@@ -3172,8 +3172,8 @@ rpcpassword=%s
         <translation>Ограничить размер кэша подписей &lt;n&gt; записями (по умолчанию: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
-        <translation>Слушай подключения по &lt;порт&gt; (по умолчанию: 30091 или testnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
+        <translation>Слушай подключения по &lt;порт&gt; (по умолчанию: 45591 или testnet: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

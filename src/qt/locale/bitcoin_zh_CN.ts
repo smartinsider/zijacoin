@@ -2693,7 +2693,7 @@ Address: %4
         <translation>接受命令行和 JSON-RPC 命令</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
         <translation>JSON-RPC的连接端口 (默认：8332　testnet：18332) </translation>
     </message>
     <message>
@@ -2785,8 +2785,8 @@ rpcpassword=%s
         <translation>在-genproclimit这种模式下控制产出多少区块</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>JSON-RPC连接监听端口&lt;port&gt; (缺省：30092　testnet：46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>JSON-RPC连接监听端口&lt;port&gt; (缺省：45592　testnet：46592)</translation>
     </message>
     <message>
         <source>Log transaction priority and fee per kB when staking blocks (default: 0)</source>
@@ -3157,8 +3157,8 @@ rpcpassword=%s
         <translation>签名缓冲大小限制每&lt;n&gt; 条目 (默认值: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
-        <translation>监听端口连接 &lt;port&gt;（缺省: 30091 或测试网络: 46591）</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
+        <translation>监听端口连接 &lt;port&gt;（缺省: 45591 或测试网络: 46591）</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

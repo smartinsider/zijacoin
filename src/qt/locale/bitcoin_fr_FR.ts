@@ -2699,8 +2699,8 @@ Adresse : %4
         <translation>Accepter la ligne de commande et les commandes JSON-RPC</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Se connecter à JSON-RPC sur &lt;port&gt; (défaut: 30092 ou tesnet: 46592) </translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Se connecter à JSON-RPC sur &lt;port&gt; (défaut: 45592 ou tesnet: 46592) </translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2790,8 +2790,8 @@ par exemple : alertnotify=echo %%s | mail -s "Alerte Zijacoin" support@zija.icu<
         <translation>Dans ce mode -genproclimit contrôle le nombre de blocs générés immédiatement</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Écouter les connexions JSON-RPC sur le ­&lt;port&gt; (par défaut : 30092 ou testnet : 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Écouter les connexions JSON-RPC sur le ­&lt;port&gt; (par défaut : 45592 ou testnet : 46592)</translation>
     </message>
     <message>
         <source>Log transaction priority and fee per kB when staking blocks (default: 0)</source>
@@ -3174,8 +3174,8 @@ par exemple : alertnotify=echo %%s | mail -s "Alerte Zijacoin" support@zija.icu<
         <translation>Limiter la taille du cache de la signature à &lt;n&gt; entrées (par défaut : 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
-        <translation>Écouter les connexions sur le &lt;port&gt; (par défaut : 30091 ou testnet : 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
+        <translation>Écouter les connexions sur le &lt;port&gt; (par défaut : 45591 ou testnet : 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

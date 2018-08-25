@@ -2658,8 +2658,8 @@ Adress: %4
         <translation>Tillåt kommandon från kommandotolken och JSON-RPC-kommandon</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Lyssna på JSON-RPC-anslutningar på &lt;port&gt; (förval: 30092 eller testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Lyssna på JSON-RPC-anslutningar på &lt;port&gt; (förval: 45592 eller testnet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2750,8 +2750,8 @@ till exempel: alertnotify=echo %%s | mail -s "Zijacoin Alert" support@zija.icu
         <translation>I denna mode kontrollerar -genproclimit hur många block som genereras på en gång.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Lyssna på JSON-RPC-anslutningar på &lt;port&gt; (förval: 30092 eller testnet: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Lyssna på JSON-RPC-anslutningar på &lt;port&gt; (förval: 45592 eller testnet: 46592)</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
@@ -3122,8 +3122,8 @@ till exempel: alertnotify=echo %%s | mail -s "Zijacoin Alert" support@zija.icu
         <translation>Begränsa signaturcachestorleken till &lt;n&gt; poster (förvalt: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
-        <translation>Lyssna efter anslutningar på &lt;port&gt; (förvalt: 30091 eller testnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
+        <translation>Lyssna efter anslutningar på &lt;port&gt; (förvalt: 45591 eller testnet: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

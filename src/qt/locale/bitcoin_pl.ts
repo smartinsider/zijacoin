@@ -2730,8 +2730,8 @@ na przykład: alertnotify=echo %%s | mail -s "Alarm Zijacoin" support@zija.icu
         <translation>W tym trybie -genproclimit ustala ilość bloków generowanych natychmiast.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Nasłuchuj połączeń JSON-RPC na &lt;port&gt; (domyślnie: 30092 lub testnet: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Nasłuchuj połączeń JSON-RPC na &lt;port&gt; (domyślnie: 45592 lub testnet: 46592)</translation>
     </message>
     <message>
         <source>Log transaction priority and fee per kB when staking blocks (default: 0)</source>
@@ -3066,8 +3066,8 @@ na przykład: alertnotify=echo %%s | mail -s "Alarm Zijacoin" support@zija.icu
         <translation>Ogranicz rozmiar pamięci podręcznej sygnatur do &lt;n&gt; wpisów (domyslnie: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
-        <translation>Nasłuchuj połączeń na &lt;port&gt; (domyślnie: 30091 lub testnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
+        <translation>Nasłuchuj połączeń na &lt;port&gt; (domyślnie: 45591 lub testnet: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

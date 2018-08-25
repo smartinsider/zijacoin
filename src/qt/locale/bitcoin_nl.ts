@@ -2698,8 +2698,8 @@ Adres: %4
         <translation>Accepteer opdrachtprompt en JSON-RPC opdrachten</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Verbind met JSON-RPC op &lt;port&gt; (standaard: 30092 of testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Verbind met JSON-RPC op &lt;port&gt; (standaard: 45592 of testnet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2790,8 +2790,8 @@ Bijvoorbeeld: alertnotify=echo %%s | mail -s "Zijacoin Alert" support@zija.icu
         <translation>In deze modus bepaalt -genproclimit hoeveel blokken onmiddelijk worden gegenereerd.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Luister naar JSON-RPC verbindingen op &lt;poort&gt; (standaard: 30092 of testnet : 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Luister naar JSON-RPC verbindingen op &lt;poort&gt; (standaard: 45592 of testnet : 46592)</translation>
     </message>
     <message>
         <source>Log transaction priority and fee per kB when staking blocks (default: 0)</source>
@@ -3174,8 +3174,8 @@ Bijvoorbeeld: alertnotify=echo %%s | mail -s "Zijacoin Alert" support@zija.icu
         <translation>Beperk grootte van ondertekeningscache tot &lt;n&gt; regels (standaard: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
-        <translation>Luister naar verbindingen op poort &lt;poort&gt; (standaard: 30091 of testnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
+        <translation>Luister naar verbindingen op poort &lt;poort&gt; (standaard: 45591 of testnet: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

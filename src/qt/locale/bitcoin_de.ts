@@ -2698,8 +2698,8 @@ Adresse: %4
         <translation>Kommandozeilen- und JSON-RPC-Befehle annehmen</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Verbinde mit JSON-RPC an &lt;port&gt; (Standard: 30092 oder Testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Verbinde mit JSON-RPC an &lt;port&gt; (Standard: 45592 oder Testnet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2778,8 +2778,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s \"Zijacoin Alert\" support@zija.icu
         <translation>In diesem Modus legt -genproclimit fest, wie viele Blöcke sofort erzeugt werden.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Abfragen von JSON-RPC Verbindungen an &lt;port&gt; (Standard: 30092 oder Testnet: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Abfragen von JSON-RPC Verbindungen an &lt;port&gt; (Standard: 45592 oder Testnet: 46592)</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
@@ -3154,8 +3154,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s \"Zijacoin Alert\" support@zija.icu
         <translation>Größe des Signaturcaches auf &lt;n&gt; Einträge begrenzen (Standard: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
-        <translation>Abfrage von Verbindungen an &lt;port&gt; (Standard: 30091 oder Testnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
+        <translation>Abfrage von Verbindungen an &lt;port&gt; (Standard: 45591 oder Testnet: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

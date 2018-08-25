@@ -2698,8 +2698,8 @@ Endereço: %4
         <translation>Aceitar comandos da consola e JSON-RPC</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
-        <translation>Ligar a JSON-RPC na &lt;port&gt; (defeito: 30092 ou testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
+        <translation>Ligar a JSON-RPC na &lt;port&gt; (defeito: 45592 ou testnet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
