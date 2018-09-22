@@ -2650,8 +2650,8 @@ Indirizzo: %4
         <translation>Accetta comandi da riga di comando e JSON-RPC</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Connetti al JSON-RPC su &lt;port&gt; (predefinita: 45592 o testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Connetti al JSON-RPC su &lt;port&gt; (predefinita: 30092 o testnet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2741,8 +2741,8 @@ ad esempio: alertnotify=echo %%s | mail -s "Allarme Zijacoin" support@zija.icu
         <translation>In questa modalità -genproclimit determina quanti blocchi saranno generati immediatamente.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Resta in attesa di connessioni JSON-RPC su &lt;port&gt; (predefinito: 45592 or testnet: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Resta in attesa di connessioni JSON-RPC su &lt;port&gt; (predefinito: 30092 or testnet: 46592)</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
@@ -3113,8 +3113,8 @@ ad esempio: alertnotify=echo %%s | mail -s "Allarme Zijacoin" support@zija.icu
         <translation>Limita la dimensione della cache delle firme a &lt;n&gt; voci (predefinito: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
-        <translation>Resta in attesa di connessioni su &lt;port&gt; (predefinito: 45591 or testnet: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
+        <translation>Resta in attesa di connessioni su &lt;port&gt; (predefinito: 30091 or testnet: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

@@ -2501,8 +2501,8 @@ Reikningur: %4
         <translation>Samþykkt  skipunarlína og JSON-RPC skipanir </translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Tengja við JSON-RPC við &lt;port&gt; (sjálfgefið: 45592 eða tilraunanet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Tengja við JSON-RPC við &lt;port&gt; (sjálfgefið: 30092 eða tilraunanet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>

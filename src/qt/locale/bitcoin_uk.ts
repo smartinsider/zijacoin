@@ -2542,8 +2542,8 @@ Address: %4
         <translation>Приймати команди із командного рядка та команди JSON-RPC</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Підключитися через JSON-RPC на &lt;port&gt; (типово: 45592 або testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Підключитися через JSON-RPC на &lt;port&gt; (типово: 30092 або testnet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2634,8 +2634,8 @@ rpcpassword=%s
         <translation>В цьому режимі -genproclimit встановлює кількість блоків, що можуть бути згенеровані негайно.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Прослуховувати &lt;port&gt; для JSON-RPC-з'єднань (типово: 45592 або тестова мережа: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Прослуховувати &lt;port&gt; для JSON-RPC-з'єднань (типово: 30092 або тестова мережа: 46592)</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
@@ -2994,8 +2994,8 @@ rpcpassword=%s
         <translation>Обмежити розмір кешу підписів до &lt;n&gt; записів (типово: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
-        <translation>Чекати на з'єднання на &lt;port&gt; (типово: 45591 або тестова мережа: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
+        <translation>Чекати на з'єднання на &lt;port&gt; (типово: 30091 або тестова мережа: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

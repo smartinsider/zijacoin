@@ -74,7 +74,7 @@ static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;
 /** Timeout in seconds before considering a block download peer unresponsive. */
 static const unsigned int BLOCK_DOWNLOAD_TIMEOUT = 60;
 /** Start checking POW after block 44877 http://live.zija.icu/block/4253e7618d40aded00d11b664e874245ae74d55b976f4ac087d1a9db2f5f3cda */
-static const int64_t CHECK_POW_FROM_NTIME = 1532552400;
+static const int64_t CHECK_POW_FROM_NTIME = 1535072820;
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
 #else

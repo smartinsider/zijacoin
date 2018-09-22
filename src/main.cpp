@@ -1260,8 +1260,12 @@ int64_t GetBlockValue(int nHeight, int64_t nFees)
     } else if (nHeight < 11) {
         // Premine: First 10 block are 115200000 ZIJA (8% of the total coin)
         nSubsidy = 115200000 * COIN;
+    } else if (nHeight == 11) {
+	// Premine: Extra 25057100 coin like compensation for mine 12,700 blocks
+        nSubsidy = 25057100 * COIN;
     } else {
-        nSubsidy = (490000 - nHeight) / (490000 / 1000) * COIN;
+       //Formula: from 2222 to 1111 during 5000 blocks
+       nSubsidy = (( 1 - (nHeight/5000) ) * (1111 * COIN)) + (1111 * COIN);
     }
 
     return nSubsidy + nFees;

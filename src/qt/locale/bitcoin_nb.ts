@@ -2646,8 +2646,8 @@ Adresse: %4
         <translation>Ta imot kommandolinje- og JSON-RPC-kommandoer</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Koble til JSON-RPC på &lt;port&gt; (default: 45592 eller testnet: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Koble til JSON-RPC på &lt;port&gt; (default: 30092 eller testnet: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
@@ -2737,8 +2737,8 @@ For eksempel: varselmelding=echo %%s | mail -s "Zijacoin varsel" support@zija.ic
         <translation>I denne modusen kontrollerer -genproclimit hvor mange blokker som genereres øyeblikkelig.</translation>
     </message>
     <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>Lytt etter JSON-RPC tilkoblinger på &lt;port&gt; (standardverdi: 45592 eller testnett: 46592)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>Lytt etter JSON-RPC tilkoblinger på &lt;port&gt; (standardverdi: 30092 eller testnett: 46592)</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
@@ -3097,8 +3097,8 @@ For eksempel: varselmelding=echo %%s | mail -s "Zijacoin varsel" support@zija.ic
         <translation>Begrens størrelsen på signatur-hurtigbufferen til &lt;n&gt; oppføringer (standard: 50000)</translation>
     </message>
     <message>
-        <source>Listen for connections on &lt;port&gt; (default: 45591 or testnet: 46591)</source>
-        <translation>Lytt etter tilkoblinger på &lt;port&gt; (standardverdi: 45591 eller testnett: 46591)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 30091 or testnet: 46591)</source>
+        <translation>Lytt etter tilkoblinger på &lt;port&gt; (standardverdi: 30091 eller testnett: 46591)</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>

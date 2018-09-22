@@ -12,7 +12,7 @@
 const std::string CLIENT_NAME("Zijacoin");
 
 // Client version number
-#define CLIENT_VERSION_SUFFIX   "-good"
+#define CLIENT_VERSION_SUFFIX   "-insider"
 
 
 // The following part of the code determines the CLIENT_BUILD variable.
@@ -26,7 +26,7 @@ const std::string CLIENT_NAME("Zijacoin");
 // * then, three options exist for determining CLIENT_BUILD:
 //   * if BUILD_DESC is defined, use that literally (output of git-describe)
 //   * if not, but GIT_COMMIT is defined, use v[maj].[min].[rev].[build]-g[commit]
-//   * otherwise, use v[maj].[min].[rev].[build]-uni
+//   * otherwise, use v[maj].[min].[rev].[build]-smart
 // finally CLIENT_VERSION_SUFFIX is added
 
 // First, include build.h if requested

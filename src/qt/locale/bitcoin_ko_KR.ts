@@ -2043,8 +2043,8 @@ Address: %4
         <translation>명령줄과 JSON-RPC 명령을 허용</translation>
     </message>
     <message>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 45592 or testnet: 46592)</source>
-        <translation>&lt;port&gt;에서 JSON-RPC로 연결함 (기본: 45592 혹은 테스트넷: 46592)</translation>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 30092 or testnet: 46592)</source>
+        <translation>&lt;port&gt;에서 JSON-RPC로 연결함 (기본: 30092 혹은 테스트넷: 46592)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
