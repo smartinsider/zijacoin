@@ -1,0 +1,36 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/zija_bg.qm</file>
+        <file alias="ca">locale/zija_ca.qm</file>
+        <file alias="cs">locale/zija_cs.qm</file>
+        <file alias="da">locale/zija_da.qm</file>
+        <file alias="de">locale/zija_de.qm</file>
+        <file alias="en">locale/zija_en.qm</file>
+        <file alias="en_US">locale/zija_en_US.qm</file>
+        <file alias="eo">locale/zija_eo.qm</file>
+        <file alias="es">locale/zija_es.qm</file>
+        <file alias="es_ES">locale/zija_es_ES.qm</file>
+        <file alias="fi">locale/zija_fi.qm</file>
+        <file alias="fr_FR">locale/zija_fr_FR.qm</file>
+        <file alias="hi_IN">locale/zija_hi_IN.qm</file>
+        <file alias="hr">locale/zija_hr.qm</file>
+        <file alias="hr_HR">locale/zija_hr_HR.qm</file>
+        <file alias="it">locale/zija_it.qm</file>
+        <file alias="ja">locale/zija_ja.qm</file>
+        <file alias="ko_KR">locale/zija_ko_KR.qm</file>
+        <file alias="lt_LT">locale/zija_lt_LT.qm</file>
+        <file alias="nl">locale/zija_nl.qm</file>
+        <file alias="pl">locale/zija_pl.qm</file>
+        <file alias="pt">locale/zija_pt.qm</file>
+        <file alias="pt_BR">locale/zija_pt_BR.qm</file>
+        <file alias="ro_RO">locale/zija_ro_RO.qm</file>
+        <file alias="ru">locale/zija_ru.qm</file>
+        <file alias="sk">locale/zija_sk.qm</file>
+        <file alias="sv">locale/zija_sv.qm</file>
+        <file alias="tr">locale/zija_tr.qm</file>
+        <file alias="uk">locale/zija_uk.qm</file>
+        <file alias="vi">locale/zija_vi.qm</file>
+        <file alias="zh_CN">locale/zija_zh_CN.qm</file>
+        <file alias="zh_TW">locale/zija_zh_TW.qm</file>
+    </qresource>
+</RCC>

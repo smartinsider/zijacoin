@@ -3,7 +3,7 @@
 <plist version="0.9">
 <dict>
   <key>LSMinimumSystemVersion</key>
-  <string>10.6.0</string>
+  <string>10.8.0</string>
 
   <key>LSArchitecturePriority</key>
   <array>
@@ -11,13 +11,13 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>zijacoin.icns</string>
+  <string>bitcoin.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The PIVX Core developers, @COPYRIGHT_YEAR@ The ZIJA Core developers</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -29,10 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Zijacoin-Qt</string>
+  <string>ZIJA-Qt</string>
+  
+  <key>CFBundleName</key>
+  <string>ZIJA-Qt</string>
+
+  <key>LSHasLocalizedDisplayName</key>
+  <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>com.zijacoin.Zijacoin-Qt</string>
+  <string>io.zija.Zija-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -40,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>com.zijacoin.ZijacoinPayment</string>
+      <string>io.zija.ZijaPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>zijacoin</string>
+        <string>zija</string>
       </array>
     </dict>
   </array>
@@ -52,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>org.zijacoin.paymentrequest</string>
+      <string>io.zija.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Zijacoin payment request</string>
+      <string>Zija payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -62,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-zijacoin-payment-request</string>
+        <string>application/x-zija-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>zijacoinpaymentrequest</string>
+          <string>zijapaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -78,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>org.zijacoin.paymentrequest</string>
+        <string>io.zija.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>
@@ -89,6 +95,9 @@
     <string>NSApplication</string>
 
   <key>NSHighResolutionCapable</key>
+    <string>True</string>
+
+  <key>LSAppNapIsDisabled</key>
     <string>True</string>
 
   <key>LSApplicationCategoryType</key>

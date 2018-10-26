@@ -1,10 +1,17 @@
 // Copyright (c) 2011-2014 The Bitcoin Core developers
+// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2018 The ZIJA developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "util.h"
 
+#include "clientversion.h"
+#include "primitives/transaction.h"
+#include "random.h"
 #include "sync.h"
+#include "utilstrencodings.h"
+#include "utilmoneystr.h"
 
 #include <stdint.h>
 #include <vector>
@@ -33,31 +40,6 @@ BOOST_AUTO_TEST_CASE(util_criticalsection)
 
         BOOST_ERROR("break was swallowed!");
     } while(0);
-}
-
-BOOST_AUTO_TEST_CASE(util_MedianFilter)
-{
-    CMedianFilter<int> filter(5, 15);
-
-    BOOST_CHECK_EQUAL(filter.median(), 15);
-
-    filter.input(20); // [15 20]
-    BOOST_CHECK_EQUAL(filter.median(), 17);
-
-    filter.input(30); // [15 20 30]
-    BOOST_CHECK_EQUAL(filter.median(), 20);
-
-    filter.input(3); // [3 15 20 30]
-    BOOST_CHECK_EQUAL(filter.median(), 17);
-
-    filter.input(7); // [3 7 15 20 30]
-    BOOST_CHECK_EQUAL(filter.median(), 15);
-
-    filter.input(18); // [3 7 18 20 30]
-    BOOST_CHECK_EQUAL(filter.median(), 18);
-
-    filter.input(0); // [0 3 7 18 30]
-    BOOST_CHECK_EQUAL(filter.median(), 7);
 }
 
 static const unsigned char ParseHex_expected[65] = {
@@ -192,7 +174,7 @@ BOOST_AUTO_TEST_CASE(util_FormatMoney)
 
 BOOST_AUTO_TEST_CASE(util_ParseMoney)
 {
-    int64_t ret = 0;
+    CAmount ret = 0;
     BOOST_CHECK(ParseMoney("0.0", ret));
     BOOST_CHECK_EQUAL(ret, 0);
 
@@ -217,6 +199,8 @@ BOOST_AUTO_TEST_CASE(util_ParseMoney)
     BOOST_CHECK_EQUAL(ret, COIN*10);
     BOOST_CHECK(ParseMoney("1.00", ret));
     BOOST_CHECK_EQUAL(ret, COIN);
+    BOOST_CHECK(ParseMoney("1", ret));
+    BOOST_CHECK_EQUAL(ret, COIN);
     BOOST_CHECK(ParseMoney("0.1", ret));
     BOOST_CHECK_EQUAL(ret, COIN/10);
     BOOST_CHECK(ParseMoney("0.01", ret));
@@ -235,7 +219,10 @@ BOOST_AUTO_TEST_CASE(util_ParseMoney)
     BOOST_CHECK_EQUAL(ret, COIN/100000000);
 
     // Attempted 63 bit overflow should fail
-    BOOST_CHECK(!ParseMoney("14400000000.54775808", ret));
+    BOOST_CHECK(!ParseMoney("92233720368.54775808", ret));
+
+    // Parsing negative amounts must fail
+    BOOST_CHECK(!ParseMoney("-1", ret));
 }
 
 BOOST_AUTO_TEST_CASE(util_IsHex)
@@ -302,21 +289,21 @@ BOOST_AUTO_TEST_CASE(strprintf_numbers)
 {
     int64_t s64t = -9223372036854775807LL; /* signed 64 bit test value */
     uint64_t u64t = 18446744073709551615ULL; /* unsigned 64 bit test value */
-    BOOST_CHECK(strprintf("%s %d %s", B, s64t, E) == B" -9223372036854775807 "E);
-    BOOST_CHECK(strprintf("%s %u %s", B, u64t, E) == B" 18446744073709551615 "E);
-    BOOST_CHECK(strprintf("%s %x %s", B, u64t, E) == B" ffffffffffffffff "E);
+    BOOST_CHECK(strprintf("%s %d %s", B, s64t, E) == B" -9223372036854775807 " E);
+    BOOST_CHECK(strprintf("%s %u %s", B, u64t, E) == B" 18446744073709551615 " E);
+    BOOST_CHECK(strprintf("%s %x %s", B, u64t, E) == B" ffffffffffffffff " E);
 
     size_t st = 12345678; /* unsigned size_t test value */
     ssize_t sst = -12345678; /* signed size_t test value */
-    BOOST_CHECK(strprintf("%s %d %s", B, sst, E) == B" -12345678 "E);
-    BOOST_CHECK(strprintf("%s %u %s", B, st, E) == B" 12345678 "E);
-    BOOST_CHECK(strprintf("%s %x %s", B, st, E) == B" bc614e "E);
+    BOOST_CHECK(strprintf("%s %d %s", B, sst, E) == B" -12345678 " E);
+    BOOST_CHECK(strprintf("%s %u %s", B, st, E) == B" 12345678 " E);
+    BOOST_CHECK(strprintf("%s %x %s", B, st, E) == B" bc614e " E);
 
     ptrdiff_t pt = 87654321; /* positive ptrdiff_t test value */
     ptrdiff_t spt = -87654321; /* negative ptrdiff_t test value */
-    BOOST_CHECK(strprintf("%s %d %s", B, spt, E) == B" -87654321 "E);
-    BOOST_CHECK(strprintf("%s %u %s", B, pt, E) == B" 87654321 "E);
-    BOOST_CHECK(strprintf("%s %x %s", B, pt, E) == B" 5397fb1 "E);
+    BOOST_CHECK(strprintf("%s %d %s", B, spt, E) == B" -87654321 " E);
+    BOOST_CHECK(strprintf("%s %u %s", B, pt, E) == B" 87654321 " E);
+    BOOST_CHECK(strprintf("%s %x %s", B, pt, E) == B" 5397fb1 " E);
 }
 #undef B
 #undef E
@@ -341,9 +328,16 @@ BOOST_AUTO_TEST_CASE(test_ParseInt32)
     BOOST_CHECK(ParseInt32("-2147483648", &n) && n == -2147483648);
     BOOST_CHECK(ParseInt32("-1234", &n) && n == -1234);
     // Invalid values
+    BOOST_CHECK(!ParseInt32("", &n));
+    BOOST_CHECK(!ParseInt32(" 1", &n)); // no padding inside
+    BOOST_CHECK(!ParseInt32("1 ", &n));
     BOOST_CHECK(!ParseInt32("1a", &n));
     BOOST_CHECK(!ParseInt32("aap", &n));
     BOOST_CHECK(!ParseInt32("0x1", &n)); // no hex
+    BOOST_CHECK(!ParseInt32("0x1", &n)); // no hex
+    const char test_bytes[] = {'1', 0, '1'};
+    std::string teststr(test_bytes, sizeof(test_bytes));
+    BOOST_CHECK(!ParseInt32(teststr, &n)); // no embedded NULs
     // Overflow and underflow
     BOOST_CHECK(!ParseInt32("-2147483649", NULL));
     BOOST_CHECK(!ParseInt32("2147483648", NULL));
@@ -351,4 +345,85 @@ BOOST_AUTO_TEST_CASE(test_ParseInt32)
     BOOST_CHECK(!ParseInt32("32482348723847471234", NULL));
 }
 
+BOOST_AUTO_TEST_CASE(test_ParseInt64)
+{
+    int64_t n;
+    // Valid values
+    BOOST_CHECK(ParseInt64("1234", NULL));
+    BOOST_CHECK(ParseInt64("0", &n) && n == 0LL);
+    BOOST_CHECK(ParseInt64("1234", &n) && n == 1234LL);
+    BOOST_CHECK(ParseInt64("01234", &n) && n == 1234LL); // no octal
+    BOOST_CHECK(ParseInt64("2147483647", &n) && n == 2147483647LL);
+    BOOST_CHECK(ParseInt64("-2147483648", &n) && n == -2147483648LL);
+    BOOST_CHECK(ParseInt64("9223372036854775807", &n) && n == (int64_t)9223372036854775807);
+    BOOST_CHECK(ParseInt64("-9223372036854775808", &n) && n == (int64_t)-9223372036854775807-1);
+    BOOST_CHECK(ParseInt64("-1234", &n) && n == -1234LL);
+    // Invalid values
+    BOOST_CHECK(!ParseInt64("", &n));
+    BOOST_CHECK(!ParseInt64(" 1", &n)); // no padding inside
+    BOOST_CHECK(!ParseInt64("1 ", &n));
+    BOOST_CHECK(!ParseInt64("1a", &n));
+    BOOST_CHECK(!ParseInt64("aap", &n));
+    BOOST_CHECK(!ParseInt64("0x1", &n)); // no hex
+    const char test_bytes[] = {'1', 0, '1'};
+    std::string teststr(test_bytes, sizeof(test_bytes));
+    BOOST_CHECK(!ParseInt64(teststr, &n)); // no embedded NULs
+    // Overflow and underflow
+    BOOST_CHECK(!ParseInt64("-9223372036854775809", NULL));
+    BOOST_CHECK(!ParseInt64("9223372036854775808", NULL));
+    BOOST_CHECK(!ParseInt64("-32482348723847471234", NULL));
+    BOOST_CHECK(!ParseInt64("32482348723847471234", NULL));
+}
+
+BOOST_AUTO_TEST_CASE(test_ParseDouble)
+{
+    double n;
+    // Valid values
+    BOOST_CHECK(ParseDouble("1234", NULL));
+    BOOST_CHECK(ParseDouble("0", &n) && n == 0.0);
+    BOOST_CHECK(ParseDouble("1234", &n) && n == 1234.0);
+    BOOST_CHECK(ParseDouble("01234", &n) && n == 1234.0); // no octal
+    BOOST_CHECK(ParseDouble("2147483647", &n) && n == 2147483647.0);
+    BOOST_CHECK(ParseDouble("-2147483648", &n) && n == -2147483648.0);
+    BOOST_CHECK(ParseDouble("-1234", &n) && n == -1234.0);
+    BOOST_CHECK(ParseDouble("1e6", &n) && n == 1e6);
+    BOOST_CHECK(ParseDouble("-1e6", &n) && n == -1e6);
+    // Invalid values
+    BOOST_CHECK(!ParseDouble("", &n));
+    BOOST_CHECK(!ParseDouble(" 1", &n)); // no padding inside
+    BOOST_CHECK(!ParseDouble("1 ", &n));
+    BOOST_CHECK(!ParseDouble("1a", &n));
+    BOOST_CHECK(!ParseDouble("aap", &n));
+    BOOST_CHECK(!ParseDouble("0x1", &n)); // no hex
+    const char test_bytes[] = {'1', 0, '1'};
+    std::string teststr(test_bytes, sizeof(test_bytes));
+    BOOST_CHECK(!ParseDouble(teststr, &n)); // no embedded NULs
+    // Overflow and underflow
+    BOOST_CHECK(!ParseDouble("-1e10000", NULL));
+    BOOST_CHECK(!ParseDouble("1e10000", NULL));
+}
+
+BOOST_AUTO_TEST_CASE(test_FormatParagraph)
+{
+    BOOST_CHECK_EQUAL(FormatParagraph("", 79, 0), "");
+    BOOST_CHECK_EQUAL(FormatParagraph("test", 79, 0), "test");
+    BOOST_CHECK_EQUAL(FormatParagraph(" test", 79, 0), "test");
+    BOOST_CHECK_EQUAL(FormatParagraph("test test", 79, 0), "test test");
+    BOOST_CHECK_EQUAL(FormatParagraph("test test", 4, 0), "test\ntest");
+    BOOST_CHECK_EQUAL(FormatParagraph("testerde test ", 4, 0), "testerde\ntest");
+    BOOST_CHECK_EQUAL(FormatParagraph("test test", 4, 4), "test\n    test");
+    BOOST_CHECK_EQUAL(FormatParagraph("This is a very long test string. This is a second sentence in the very long test string."), "This is a very long test string. This is a second sentence in the very long\ntest string.");
+}
+
+BOOST_AUTO_TEST_CASE(test_FormatSubVersion)
+{
+    std::vector<std::string> comments;
+    comments.push_back(std::string("comment1"));
+    std::vector<std::string> comments2;
+    comments2.push_back(std::string("comment1"));
+    comments2.push_back(std::string("comment2"));
+    BOOST_CHECK_EQUAL(FormatSubVersion("Test", 99900, std::vector<std::string>()),std::string("/Test:0.9.99/"));
+    BOOST_CHECK_EQUAL(FormatSubVersion("Test", 99900, comments),std::string("/Test:0.9.99(comment1)/"));
+    BOOST_CHECK_EQUAL(FormatSubVersion("Test", 99900, comments2),std::string("/Test:0.9.99(comment1; comment2)/"));
+}
 BOOST_AUTO_TEST_SUITE_END()

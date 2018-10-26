@@ -1,9 +1,11 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2018 The ZIJA developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef QRCODEDIALOG_H
-#define QRCODEDIALOG_H
+#ifndef BITCOIN_QT_RECEIVEREQUESTDIALOG_H
+#define BITCOIN_QT_RECEIVEREQUESTDIALOG_H
 
 #include "walletmodel.h"
 
@@ -11,10 +13,13 @@
 #include <QImage>
 #include <QLabel>
 
-namespace Ui {
-    class ReceiveRequestDialog;
-}
 class OptionsModel;
+
+namespace Ui
+{
+class ReceiveRequestDialog;
+}
+
 QT_BEGIN_NAMESPACE
 class QMenu;
 QT_END_NAMESPACE
@@ -27,7 +32,7 @@ class QRImageWidget : public QLabel
     Q_OBJECT
 
 public:
-    explicit QRImageWidget(QWidget *parent = 0);
+    explicit QRImageWidget(QWidget* parent = 0);
     QImage exportImage();
 
 public slots:
@@ -35,11 +40,11 @@ public slots:
     void copyImage();
 
 protected:
-    virtual void mousePressEvent(QMouseEvent *event);
-    virtual void contextMenuEvent(QContextMenuEvent *event);
+    virtual void mousePressEvent(QMouseEvent* event);
+    virtual void contextMenuEvent(QContextMenuEvent* event);
 
 private:
-    QMenu *contextMenu;
+    QMenu* contextMenu;
 };
 
 class ReceiveRequestDialog : public QDialog
@@ -47,11 +52,11 @@ class ReceiveRequestDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit ReceiveRequestDialog(QWidget *parent = 0);
+    explicit ReceiveRequestDialog(QWidget* parent = 0);
     ~ReceiveRequestDialog();
 
-    void setModel(OptionsModel *model);
-    void setInfo(const SendCoinsRecipient &info);
+    void setModel(OptionsModel* model);
+    void setInfo(const SendCoinsRecipient& info);
 
 private slots:
     void on_btnCopyURI_clicked();
@@ -60,9 +65,9 @@ private slots:
     void update();
 
 private:
-    Ui::ReceiveRequestDialog *ui;
-    OptionsModel *model;
+    Ui::ReceiveRequestDialog* ui;
+    OptionsModel* model;
     SendCoinsRecipient info;
 };
 
-#endif // QRCODEDIALOG_H
+#endif // BITCOIN_QT_RECEIVEREQUESTDIALOG_H

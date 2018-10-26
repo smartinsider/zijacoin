@@ -1,11 +1,16 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2011-2014 The Bitcoin developers
+// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2018 The ZIJA developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PAYMENTREQUESTPLUS_H
-#define PAYMENTREQUESTPLUS_H
+#ifndef BITCOIN_QT_PAYMENTREQUESTPLUS_H
+#define BITCOIN_QT_PAYMENTREQUESTPLUS_H
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #include "paymentrequest.pb.h"
+#pragma GCC diagnostic pop
 
 #include "base58.h"
 
@@ -21,10 +26,10 @@
 class PaymentRequestPlus
 {
 public:
-    PaymentRequestPlus() { }
+    PaymentRequestPlus() {}
 
     bool parse(const QByteArray& data);
-    bool SerializeToString(string* output) const;
+    bool SerializeToString(std::string* output) const;
 
     bool IsInitialized() const;
     QString getPKIType() const;
@@ -33,7 +38,7 @@ public:
     bool getMerchant(X509_STORE* certStore, QString& merchant) const;
 
     // Returns list of outputs, amount
-    QList<std::pair<CScript,qint64> > getPayTo() const;
+    QList<std::pair<CScript, CAmount> > getPayTo() const;
 
     const payments::PaymentDetails& getDetails() const { return details; }
 
@@ -42,5 +47,4 @@ private:
     payments::PaymentDetails details;
 };
 
-#endif // PAYMENTREQUESTPLUS_H
-
+#endif // BITCOIN_QT_PAYMENTREQUESTPLUS_H

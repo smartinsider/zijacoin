@@ -1,57 +1,44 @@
-// Copyright (c) 2012 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2012-2014 The Bitcoin developers
+// Copyright (c) 2014-2015 The Dash developers
+// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2018 The ZIJA developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef BITCOIN_VERSION_H
 #define BITCOIN_VERSION_H
 
-#include "clientversion.h"
+/**
+ * network protocol versioning
+ */
 
-#include <string>
+static const int PROTOCOL_VERSION = 70914;
 
-//
-// client versioning
-//
-
-static const int CLIENT_VERSION =
-                           1000000 * CLIENT_VERSION_MAJOR
-                         +   10000 * CLIENT_VERSION_MINOR
-                         +     100 * CLIENT_VERSION_REVISION
-                         +       1 * CLIENT_VERSION_BUILD;
-
-extern const std::string CLIENT_NAME;
-extern const std::string CLIENT_BUILD;
-extern const std::string CLIENT_DATE;
-
-// PoSV
-// nTime field added to CTransaction
-// vchBlockSig field added to CBlock
-static const int POW_TX_VERSION = 1;
-static const int POW_BLOCK_VERSION = 2;
-
-//
-// network protocol versioning
-//
-
-static const int PROTOCOL_VERSION = 80000;
-
-// intial proto version, to be increased after version/verack negotiation
+//! initial proto version, to be increased after version/verack negotiation
 static const int INIT_PROTO_VERSION = 209;
 
-// disconnect from peers older than this proto version
-static const int MIN_PEER_PROTO_VERSION = 80000;
+//! In this version, 'getheaders' was introduced.
+static const int GETHEADERS_VERSION = 70077;
 
-// nTime field added to CAddress, starting with this version;
-// if possible, avoid requesting addresses nodes older than this
+//! disconnect from peers older than this proto version
+static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70912;
+static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT = 70914;
+
+//! masternodes older than this proto version use old strMessage format for mnannounce
+static const int MIN_PEER_MNANNOUNCE = 70913;
+
+//! nTime field added to CAddress, starting with this version;
+//! if possible, avoid requesting addresses nodes older than this
 static const int CADDR_TIME_VERSION = 31402;
 
-// only request blocks from nodes outside this range of versions
-static const int NOBLKS_VERSION_START = 32000;
-static const int NOBLKS_VERSION_END = 32400;
-
-// BIP 0031, pong message, is enabled for all versions AFTER this one
+//! BIP 0031, pong message, is enabled for all versions AFTER this one
 static const int BIP0031_VERSION = 60000;
 
-// "mempool" command, enhanced "getdata" behavior starts with this version:
+//! "mempool" command, enhanced "getdata" behavior starts with this version
 static const int MEMPOOL_GD_VERSION = 60002;
 
-#endif
+//! "filter*" commands are disabled without NODE_BLOOM after and including this version
+static const int NO_BLOOM_VERSION = 70005;
+
+
+#endif // BITCOIN_VERSION_H

@@ -1,0 +1,26 @@
+# /etc/conf.d/zijad: config file for /etc/init.d/zijad
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/zija/zija.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/zijad"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/zijad.pid"
+
+# Where to write zijad data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/zijad"
+
+# User and group to own zijad process
+#BITCOIND_USER="zija"
+#BITCOIND_GROUP="zija"
+
+# Path to zijad executable
+#BITCOIND_BIN="/usr/bin/zijad"
+
+# Nice value to run zijad under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

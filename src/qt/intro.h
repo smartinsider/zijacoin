@@ -1,17 +1,22 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2018 The ZIJA developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef INTRO_H
-#define INTRO_H
+#ifndef BITCOIN_QT_INTRO_H
+#define BITCOIN_QT_INTRO_H
 
 #include <QDialog>
 #include <QMutex>
 #include <QThread>
 
+static const bool DEFAULT_CHOOSE_DATADIR = false;
+
 class FreespaceChecker;
 
-namespace Ui {
+namespace Ui
+{
 class Intro;
 }
 
@@ -24,19 +29,22 @@ class Intro : public QDialog
     Q_OBJECT
 
 public:
-    explicit Intro(QWidget *parent = 0);
+    explicit Intro(QWidget* parent = 0);
     ~Intro();
 
     QString getDataDirectory();
-    void setDataDirectory(const QString &dataDir);
+    void setDataDirectory(const QString& dataDir);
 
     /**
      * Determine data directory. Let the user choose if the current one doesn't exist.
      *
+     * @returns true if a data directory was selected, false if the user cancelled the selection
+     * dialog.
+     *
      * @note do NOT call global GetDataDir() before calling this function, this
      * will cause the wrong path to be cached.
      */
-    static void pickDataDirectory();
+    static bool pickDataDirectory();
 
     /**
      * Determine default data directory for operating system.
@@ -48,26 +56,26 @@ signals:
     void stopThread();
 
 public slots:
-    void setStatus(int status, const QString &message, quint64 bytesAvailable);
+    void setStatus(int status, const QString& message, quint64 bytesAvailable);
 
 private slots:
-    void on_dataDirectory_textChanged(const QString &arg1);
+    void on_dataDirectory_textChanged(const QString& arg1);
     void on_ellipsisButton_clicked();
     void on_dataDirDefault_clicked();
     void on_dataDirCustom_clicked();
 
 private:
-    Ui::Intro *ui;
-    QThread *thread;
+    Ui::Intro* ui;
+    QThread* thread;
     QMutex mutex;
     bool signalled;
     QString pathToCheck;
 
     void startThread();
-    void checkPath(const QString &dataDir);
+    void checkPath(const QString& dataDir);
     QString getPathToCheck();
 
     friend class FreespaceChecker;
 };
 
-#endif // INTRO_H
+#endif // BITCOIN_QT_INTRO_H

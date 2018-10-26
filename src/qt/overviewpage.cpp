@@ -1,4 +1,7 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2011-2014 The Bitcoin developers
+// Copyright (c) 2014-2015 The Dash developers
+// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2018 The ZIJA developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -9,104 +12,130 @@
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
+#include "init.h"
+#include "obfuscation.h"
+#include "obfuscationconfig.h"
 #include "optionsmodel.h"
 #include "transactionfilterproxy.h"
+#include "transactionrecord.h"
 #include "transactiontablemodel.h"
 #include "walletmodel.h"
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
+#include <QSettings>
+#include <QTimer>
 
-#define DECORATION_SIZE 64
-#define NUM_ITEMS 5
+#define DECORATION_SIZE 48
+#define ICON_OFFSET 16
+#define NUM_ITEMS 9
+
+extern CWallet* pwalletMain;
 
 class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::BTC)
+    TxViewDelegate() : QAbstractItemDelegate(), unit(BitcoinUnits::ZIJA)
     {
-
     }
 
-    inline void paint(QPainter *painter, const QStyleOptionViewItem &option,
-                      const QModelIndex &index ) const
+    inline void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
     {
         painter->save();
 
         QIcon icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
         QRect mainRect = option.rect;
+        mainRect.moveLeft(ICON_OFFSET);
         QRect decorationRect(mainRect.topLeft(), QSize(DECORATION_SIZE, DECORATION_SIZE));
         int xspace = DECORATION_SIZE + 8;
         int ypad = 6;
-        int halfheight = (mainRect.height() - 2*ypad)/2;
-        QRect amountRect(mainRect.left() + xspace, mainRect.top()+ypad, mainRect.width() - xspace, halfheight);
-        QRect addressRect(mainRect.left() + xspace, mainRect.top()+ypad+halfheight, mainRect.width() - xspace, halfheight);
+        int halfheight = (mainRect.height() - 2 * ypad) / 2;
+        QRect amountRect(mainRect.left() + xspace, mainRect.top() + ypad, mainRect.width() - xspace - ICON_OFFSET, halfheight);
+        QRect addressRect(mainRect.left() + xspace, mainRect.top() + ypad + halfheight, mainRect.width() - xspace, halfheight);
         icon.paint(painter, decorationRect);
 
         QDateTime date = index.data(TransactionTableModel::DateRole).toDateTime();
         QString address = index.data(Qt::DisplayRole).toString();
         qint64 amount = index.data(TransactionTableModel::AmountRole).toLongLong();
         bool confirmed = index.data(TransactionTableModel::ConfirmedRole).toBool();
+
+        // Check transaction status
+        int nStatus = index.data(TransactionTableModel::StatusRole).toInt();
+        bool fConflicted = false;
+        if (nStatus == TransactionStatus::Conflicted || nStatus == TransactionStatus::NotAccepted) {
+            fConflicted = true; // Most probably orphaned, but could have other reasons as well
+        }
+        bool fImmature = false;
+        if (nStatus == TransactionStatus::Immature) {
+            fImmature = true;
+        }
+
         QVariant value = index.data(Qt::ForegroundRole);
-        QColor foreground = option.palette.color(QPalette::Text);
-        if(value.canConvert<QBrush>())
-        {
+        QColor foreground = COLOR_BLACK;
+        if (value.canConvert<QBrush>()) {
             QBrush brush = qvariant_cast<QBrush>(value);
             foreground = brush.color();
         }
 
         painter->setPen(foreground);
-        painter->drawText(addressRect, Qt::AlignLeft|Qt::AlignVCenter, address);
+        QRect boundingRect;
+        painter->drawText(addressRect, Qt::AlignLeft | Qt::AlignVCenter, address, &boundingRect);
 
-        if(amount < 0)
-        {
-            foreground = COLOR_NEGATIVE;
+        if (index.data(TransactionTableModel::WatchonlyRole).toBool()) {
+            QIcon iconWatchonly = qvariant_cast<QIcon>(index.data(TransactionTableModel::WatchonlyDecorationRole));
+            QRect watchonlyRect(boundingRect.right() + 5, mainRect.top() + ypad + halfheight, 16, halfheight);
+            iconWatchonly.paint(painter, watchonlyRect);
         }
-        else if(!confirmed)
-        {
+
+        if(fConflicted) { // No need to check anything else for conflicted transactions
+            foreground = COLOR_CONFLICTED;
+        } else if (!confirmed || fImmature) {
             foreground = COLOR_UNCONFIRMED;
-        }
-        else
-        {
-            foreground = option.palette.color(QPalette::Text);
+        } else if (amount < 0) {
+            foreground = COLOR_NEGATIVE;
+        } else {
+            foreground = COLOR_BLACK;
         }
         painter->setPen(foreground);
-        QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true);
-        if(!confirmed)
-        {
+        QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true, BitcoinUnits::separatorAlways);
+        if (!confirmed) {
             amountText = QString("[") + amountText + QString("]");
         }
-        painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
+        painter->drawText(amountRect, Qt::AlignRight | Qt::AlignVCenter, amountText);
 
-        painter->setPen(option.palette.color(QPalette::Text));
-        painter->drawText(amountRect, Qt::AlignLeft|Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
+        painter->setPen(COLOR_BLACK);
+        painter->drawText(amountRect, Qt::AlignLeft | Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
 
         painter->restore();
     }
 
-    inline QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
+    inline QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
     {
         return QSize(DECORATION_SIZE, DECORATION_SIZE);
     }
 
     int unit;
-
 };
 #include "overviewpage.moc"
 
-OverviewPage::OverviewPage(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::OverviewPage),
-    clientModel(0),
-    walletModel(0),
-    currentBalance(-1),
-    currentStake(0),
-    currentUnconfirmedBalance(-1),
-    currentImmatureBalance(-1),
-    txdelegate(new TxViewDelegate()),
-    filter(0)
+OverviewPage::OverviewPage(QWidget* parent) : QWidget(parent),
+                                              ui(new Ui::OverviewPage),
+                                              clientModel(0),
+                                              walletModel(0),
+                                              currentBalance(-1),
+                                              currentUnconfirmedBalance(-1),
+                                              currentImmatureBalance(-1),
+                                              currentZerocoinBalance(-1),
+                                              currentUnconfirmedZerocoinBalance(-1),
+                                              currentimmatureZerocoinBalance(-1),
+                                              currentWatchOnlyBalance(-1),
+                                              currentWatchUnconfBalance(-1),
+                                              currentWatchImmatureBalance(-1),
+                                              txdelegate(new TxViewDelegate()),
+                                              filter(0)
 {
+    nDisplayUnit = 0; // just make sure it's not unitialized
     ui->setupUi(this);
 
     // Recent transactions
@@ -125,9 +154,9 @@ OverviewPage::OverviewPage(QWidget *parent) :
     showOutOfSyncWarning(true);
 }
 
-void OverviewPage::handleTransactionClicked(const QModelIndex &index)
+void OverviewPage::handleTransactionClicked(const QModelIndex& index)
 {
-    if(filter)
+    if (filter)
         emit transactionClicked(filter->mapToSource(index));
 }
 
@@ -136,42 +165,189 @@ OverviewPage::~OverviewPage()
     delete ui;
 }
 
-void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance)
+void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBalance, QString& sZIJAPercentage, QString& szZIJAPercentage)
 {
-    int unit = walletModel->getOptionsModel()->getDisplayUnit();
-    currentBalance = balance;
-    currentStake = stake;
-    currentUnconfirmedBalance = unconfirmedBalance;
-    currentImmatureBalance = immatureBalance;
-    ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
-    ui->labelStake->setText(BitcoinUnits::formatWithUnit(unit, stake));
-    ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, unconfirmedBalance));
-    ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));
-    ui->labelTotal->setText(BitcoinUnits::formatWithUnit(unit, balance + stake + unconfirmedBalance + immatureBalance));
+    int nPrecision = 2;
+    double dzPercentage = 0.0;
 
-    // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
-    // for the non-mining users
-    bool showImmature = immatureBalance != 0;
-    ui->labelImmature->setVisible(showImmature);
-    ui->labelImmatureText->setVisible(showImmature);
+    if (nZerocoinBalance <= 0){
+        dzPercentage = 0.0;
+    }
+    else{
+        if (nUnlockedBalance <= 0){
+            dzPercentage = 100.0;
+        }
+        else{
+            dzPercentage = 100.0 * (double)(nZerocoinBalance / (double)(nZerocoinBalance + nUnlockedBalance));
+        }
+    }
+
+    double dPercentage = 100.0 - dzPercentage;
+    
+    szZIJAPercentage = "(" + QLocale(QLocale::system()).toString(dzPercentage, 'f', nPrecision) + " %)";
+    sZIJAPercentage = "(" + QLocale(QLocale::system()).toString(dPercentage, 'f', nPrecision) + " %)";
+    
 }
 
-void OverviewPage::setClientModel(ClientModel *model)
+void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, 
+                              const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
+                              const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance)
+{
+    currentBalance = balance;
+    currentUnconfirmedBalance = unconfirmedBalance;
+    currentImmatureBalance = immatureBalance;
+    currentZerocoinBalance = zerocoinBalance;
+    currentUnconfirmedZerocoinBalance = unconfirmedZerocoinBalance;
+    currentimmatureZerocoinBalance = immatureZerocoinBalance;
+    currentWatchOnlyBalance = watchOnlyBalance;
+    currentWatchUnconfBalance = watchUnconfBalance;
+    currentWatchImmatureBalance = watchImmatureBalance;
+
+    CAmount nLockedBalance = 0;
+    CAmount nWatchOnlyLockedBalance = 0;
+    if (pwalletMain) {
+        nLockedBalance = pwalletMain->GetLockedCoins();
+        nWatchOnlyLockedBalance = pwalletMain->GetLockedWatchOnlyBalance();
+    }
+    // ZIJA Balance
+    CAmount nTotalBalance = balance + unconfirmedBalance + nLockedBalance;
+    CAmount pivAvailableBalance = balance - immatureBalance;
+    CAmount nTotalWatchBalance = watchOnlyBalance + watchUnconfBalance + watchImmatureBalance;    
+    CAmount nUnlockedBalance = nTotalBalance - nLockedBalance - nLockedBalance; // increment nLockedBalance twice because it was added to
+                                                                                // nTotalBalance above
+    // zZIJA Balance
+    CAmount matureZerocoinBalance = zerocoinBalance - unconfirmedZerocoinBalance - immatureZerocoinBalance;
+    // Percentages
+    QString szPercentage = "";
+    QString sPercentage = "";
+    getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
+    // Combined balances
+    CAmount availableTotalBalance = pivAvailableBalance + matureZerocoinBalance;
+    CAmount sumTotalBalance = nTotalBalance + zerocoinBalance;
+
+    // ZIJA labels
+    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, pivAvailableBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance, false, BitcoinUnits::separatorAlways));
+
+    // Watchonly labels
+    ui->labelWatchAvailable->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelWatchPending->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelWatchImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchImmatureBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelWatchLocked->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nWatchOnlyLockedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelWatchTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalWatchBalance, false, BitcoinUnits::separatorAlways));
+
+    // zZIJA labels
+    ui->labelzBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceMature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, matureZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureZerocoinBalance, false, BitcoinUnits::separatorAlways));
+
+    // Combined labels
+    ui->labelBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, availableTotalBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelTotalz->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, sumTotalBalance, false, BitcoinUnits::separatorAlways));
+
+    // Percentage labels
+    ui->labelZIJAPercent->setText(sPercentage);
+    ui->labelzZIJAPercent->setText(szPercentage);
+
+    // Adjust bubble-help according to AutoMint settings
+    QString automintHelp = tr("Current percentage of zZIJA.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
+    bool fEnableZeromint = GetBoolArg("-enablezeromint", false);
+    int nZeromintPercentage = GetArg("-zeromintpercentage", 10);
+    if (fEnableZeromint) {
+        automintHelp += tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n";
+        automintHelp += tr("To disable AutoMint add 'enablezeromint=0' in zija.conf.");
+    }
+    else {
+        automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in zija.conf");
+    }
+
+    // Only show most balances if they are non-zero for the sake of simplicity
+    QSettings settings;
+    bool settingShowAllBalances = !settings.value("fHideZeroBalances").toBool();
+    bool showSumAvailable = settingShowAllBalances || sumTotalBalance != availableTotalBalance;
+    ui->labelBalanceTextz->setVisible(showSumAvailable);
+    ui->labelBalancez->setVisible(showSumAvailable);
+    bool showZIJAAvailable = settingShowAllBalances || pivAvailableBalance != nTotalBalance;
+    bool showWatchOnlyZIJAAvailable = watchOnlyBalance != nTotalWatchBalance;
+    bool showZIJAPending = settingShowAllBalances || unconfirmedBalance != 0;
+    bool showWatchOnlyZIJAPending = watchUnconfBalance != 0;
+    bool showZIJALocked = settingShowAllBalances || nLockedBalance != 0;
+    bool showWatchOnlyZIJALocked = nWatchOnlyLockedBalance != 0;
+    bool showImmature = settingShowAllBalances || immatureBalance != 0;
+    bool showWatchOnlyImmature = watchImmatureBalance != 0;
+    bool showWatchOnly = nTotalWatchBalance != 0;
+    ui->labelBalance->setVisible(showZIJAAvailable || showWatchOnlyZIJAAvailable);
+    ui->labelBalanceText->setVisible(showZIJAAvailable || showWatchOnlyZIJAAvailable);
+    ui->labelWatchAvailable->setVisible(showZIJAAvailable && showWatchOnly);
+    ui->labelUnconfirmed->setVisible(showZIJAPending || showWatchOnlyZIJAPending);
+    ui->labelPendingText->setVisible(showZIJAPending || showWatchOnlyZIJAPending);
+    ui->labelWatchPending->setVisible(showZIJAPending && showWatchOnly);
+    ui->labelLockedBalance->setVisible(showZIJALocked || showWatchOnlyZIJALocked);
+    ui->labelLockedBalanceText->setVisible(showZIJALocked || showWatchOnlyZIJALocked);
+    ui->labelWatchLocked->setVisible(showZIJALocked && showWatchOnly);
+    ui->labelImmature->setVisible(showImmature || showWatchOnlyImmature); // for symmetry reasons also show immature label when the watch-only one is shown
+    ui->labelImmatureText->setVisible(showImmature || showWatchOnlyImmature);
+    ui->labelWatchImmature->setVisible(showImmature && showWatchOnly); // show watch-only immature balance
+    bool showzZIJAAvailable = settingShowAllBalances || zerocoinBalance != matureZerocoinBalance;
+    bool showzZIJAnconfirmed = settingShowAllBalances || unconfirmedZerocoinBalance != 0;
+    bool showzZIJAImmature = settingShowAllBalances || immatureZerocoinBalance != 0;
+    ui->labelzBalanceMature->setVisible(showzZIJAAvailable);
+    ui->labelzBalanceMatureText->setVisible(showzZIJAAvailable);
+    ui->labelzBalanceUnconfirmed->setVisible(showzZIJAnconfirmed);
+    ui->labelzBalanceUnconfirmedText->setVisible(showzZIJAnconfirmed);
+    ui->labelzBalanceImmature->setVisible(showzZIJAImmature);
+    ui->labelzBalanceImmatureText->setVisible(showzZIJAImmature);
+    bool showPercentages = ! (zerocoinBalance == 0 && nTotalBalance == 0);
+    ui->labelZIJAPercent->setVisible(showPercentages);
+    ui->labelzZIJAPercent->setVisible(showPercentages);
+
+    static int cachedTxLocks = 0;
+
+    if (cachedTxLocks != nCompleteTXLocks) {
+        cachedTxLocks = nCompleteTXLocks;
+        ui->listTransactions->update();
+    }
+}
+
+// show/hide watch-only labels
+void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
+{
+    ui->labelSpendable->setVisible(showWatchOnly);      // show spendable label (only when watch-only is active)
+    ui->labelWatchonly->setVisible(showWatchOnly);      // show watch-only label
+    ui->labelWatchAvailable->setVisible(showWatchOnly); // show watch-only available balance
+    ui->labelWatchPending->setVisible(showWatchOnly);   // show watch-only pending balance
+    ui->labelWatchLocked->setVisible(showWatchOnly);     // show watch-only total balance
+    ui->labelWatchTotal->setVisible(showWatchOnly);     // show watch-only total balance
+
+    if (!showWatchOnly) {
+        ui->labelWatchImmature->hide();
+    } else {
+        ui->labelBalance->setIndent(20);
+        ui->labelUnconfirmed->setIndent(20);
+        ui->labelLockedBalance->setIndent(20);
+        ui->labelImmature->setIndent(20);
+        ui->labelTotal->setIndent(20);
+    }
+}
+
+void OverviewPage::setClientModel(ClientModel* model)
 {
     this->clientModel = model;
-    if(model)
-    {
+    if (model) {
         // Show warning if this is a prerelease version
         connect(model, SIGNAL(alertsChanged(QString)), this, SLOT(updateAlerts(QString)));
         updateAlerts(model->getStatusBarWarnings());
     }
 }
 
-void OverviewPage::setWalletModel(WalletModel *model)
+void OverviewPage::setWalletModel(WalletModel* model)
 {
     this->walletModel = model;
-    if(model && model->getOptionsModel())
-    {
+    if (model && model->getOptionsModel()) {
         // Set up transaction list
         filter = new TransactionFilterProxy();
         filter->setSourceModel(model->getTransactionTableModel());
@@ -179,38 +355,45 @@ void OverviewPage::setWalletModel(WalletModel *model)
         filter->setDynamicSortFilter(true);
         filter->setSortRole(Qt::EditRole);
         filter->setShowInactive(false);
-        //filter->sort(TransactionTableModel::Status, Qt::DescendingOrder);
         filter->sort(TransactionTableModel::Date, Qt::DescendingOrder);
 
         ui->listTransactions->setModel(filter);
         ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
 
         // Keep up to date with wallet
-        setBalance(model->getBalance(), model->getStake(), model->getUnconfirmedBalance(), model->getImmatureBalance());
-        connect(model, SIGNAL(balanceChanged(qint64, qint64, qint64, qint64)), this, SLOT(setBalance(qint64, qint64, qint64, qint64)));
+        setBalance(model->getBalance(), model->getUnconfirmedBalance(), model->getImmatureBalance(),
+                   model->getZerocoinBalance(), model->getUnconfirmedZerocoinBalance(), model->getImmatureZerocoinBalance(), 
+                   model->getWatchBalance(), model->getWatchUnconfirmedBalance(), model->getWatchImmatureBalance());
+        connect(model, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this, 
+                         SLOT(setBalance(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
 
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
+        connect(model->getOptionsModel(), SIGNAL(hideZeroBalancesChanged(bool)), this, SLOT(updateDisplayUnit()));
+
+        updateWatchOnlyLabels(model->haveWatchOnly());
+        connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("BTC")
+    // update the display unit, to not use the default ("ZIJA")
     updateDisplayUnit();
 }
 
 void OverviewPage::updateDisplayUnit()
 {
-    if(walletModel && walletModel->getOptionsModel())
-    {
-        if(currentBalance != -1)
-            setBalance(currentBalance, walletModel->getStake(), currentUnconfirmedBalance, currentImmatureBalance);
+    if (walletModel && walletModel->getOptionsModel()) {
+        nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
+        if (currentBalance != -1)
+            setBalance(currentBalance, currentUnconfirmedBalance, currentImmatureBalance, currentZerocoinBalance, currentUnconfirmedZerocoinBalance, currentimmatureZerocoinBalance,
+                currentWatchOnlyBalance, currentWatchUnconfBalance, currentWatchImmatureBalance);
 
         // Update txdelegate->unit with the current unit
-        txdelegate->unit = walletModel->getOptionsModel()->getDisplayUnit();
+        txdelegate->unit = nDisplayUnit;
 
         ui->listTransactions->update();
     }
 }
 
-void OverviewPage::updateAlerts(const QString &warnings)
+void OverviewPage::updateAlerts(const QString& warnings)
 {
     this->ui->labelAlerts->setVisible(!warnings.isEmpty());
     this->ui->labelAlerts->setText(warnings);

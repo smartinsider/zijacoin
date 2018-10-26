@@ -1,0 +1,26 @@
+[Unit]
+Description=ZIJA's distributed currency daemon
+After=network.target
+
+[Service]
+User=zija
+Group=zija
+
+Type=forking
+PIDFile=/var/lib/zijad/zijad.pid
+
+ExecStart=/usr/bin/zijad -daemon -pid=/var/lib/zijad/zijad.pid \
+          -conf=/etc/zija/zija.conf -datadir=/var/lib/zijad
+
+ExecStop=-/usr/bin/zija-cli -conf=/etc/zija/zija.conf \
+         -datadir=/var/lib/zijad stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

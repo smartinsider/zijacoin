@@ -1,76 +1,72 @@
-Zijacoin 2.0.1 BETA
+ZIJA Core
 =====================
-
-Copyright (c) 2009-2016 Bitcoin Developers
-Copyright (c) 2014-2018 Zijacoin Developers
-
 
 Setup
 ---------------------
-[Zijacoin Core](https://www.zija.icu) is the original Zijacoin client and it builds the backbone of the network. However, it downloads and stores the entire history of Zijacoin transactions (which is currently several GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once. If you would like the process to go faster you can [download the blockchain directly](bootstrap.md).
+[ZIJA Core](http://zija.icu/wallet) is the original ZIJA client and it builds the backbone of the network. However, it downloads and stores the entire history of ZIJA transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
-The following are some helpful notes on how to run Zijacoin on your native platform. 
+The following are some helpful notes on how to run ZIJA on your native platform.
 
 ### Unix
 
-You need the Qt4 run-time libraries to run Zijacoin-Qt. On Debian or Ubuntu:
-
-	sudo apt-get install libqtgui4
-
 Unpack the files into a directory and run:
 
-- bin/32/zijacoin-qt (GUI, 32-bit) or bin/32/zijacoind (headless, 32-bit)
-- bin/64/zijacoin-qt (GUI, 64-bit) or bin/64/zijacoind (headless, 64-bit)
-
-
+- bin/32/zija-qt (GUI, 32-bit) or bin/32/zijad (headless, 32-bit)
+- bin/64/zija-qt (GUI, 64-bit) or bin/64/zijad (headless, 64-bit)
 
 ### Windows
 
-Unpack the files into a directory, and then run zijacoin-qt.exe.
+Unpack the files into a directory, and then run zija-qt.exe.
 
 ### OSX
 
-Drag Zijacoin-Qt to your applications folder, and then run Zijacoin-Qt.
+Drag ZIJA-Qt to your applications folder, and then run ZIJA-Qt.
 
 ### Need Help?
 
-* See the documentation at the [Zijacoin Wiki](https://wiki.zija.icu/)
+* See the documentation at the [ZIJA Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
 for help and more information.
-* Ask for help on [#zijacoin](http://webchat.freenode.net?channels=zijacoin) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=zijacoin).
-* Ask for help on the [ZijacoinTalk](https://zijacointalk.org/) forums, in the [Technical Support board](https://www.zijacointalk.org/category/9/troubleshooting).
+* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [ZIJA Forum](http://forum.zija.icu/).
+* Join our Discord server [Discord Server](https://discord.zija.icu)
+* Join one of our Slack groups [ZIJA Slack Groups](https://zija.icu/slack-logins/) (Main community is replaced by Discord).
 
 Building
 ---------------------
-The following are developer notes on how to build Zijacoin on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build ZIJA on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OSX Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
-- [Windows Build Notes](build-msw.md)
+- [Gitian Building Guide](gitian-building.md)
 
 Development
 ---------------------
-The Zijacoin repo's [root README](https://github.com/coin-universe/zijacoin.git/blob/master/README.md) contains relevant information on the development process and automated testing.
+The Zija repo's [root README](https://github.com/smartinsider/zijacoin/blob/master/README.md) contains relevant information on the development process and automated testing.
 
-- [Coding Guidelines](coding.md)
+- [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://dev.visucore.com/bitcoin/doxygen/)
+- [Source Code Documentation (External Link)](https://dev.visucore.com/bitcoin/doxygen/) ***TODO***
 - [Translation Process](translation_process.md)
 - [Unit Tests](unit-tests.md)
+- [Unauthenticated REST Interface](REST-interface.md)
+- [Dnsseed Policy](dnsseed-policy.md)
 
 ### Resources
-* Discuss on the [ZijacoinTalk](https://zijacointalk.org/) forums, in the [Development & Technical Discussion board](https://www.zijacointalk.org/category/4/development-discussions).
+
+* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [ZIJA](http://forum.zija.icu/) forum.
+* Join the [ZIJA-Dev](https://zija-dev.slack.com/) Slack group ([Sign-Up](https://zija-dev.herokuapp.com/)).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
 - [Files](files.md)
 - [Tor Support](tor.md)
+- [Init Scripts (systemd/upstart/openrc)](init.md)
 
 License
 ---------------------
 Distributed under the [MIT/X11 software license](http://www.opensource.org/licenses/mit-license.php).
-This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](http://www.openssl.org/). This product includes
+This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](https://www.openssl.org/). This product includes
 cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)), and UPnP software written by Thomas Bernard.

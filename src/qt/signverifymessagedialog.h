@@ -1,16 +1,19 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2018 The ZIJA developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SIGNVERIFYMESSAGEDIALOG_H
-#define SIGNVERIFYMESSAGEDIALOG_H
+#ifndef BITCOIN_QT_SIGNVERIFYMESSAGEDIALOG_H
+#define BITCOIN_QT_SIGNVERIFYMESSAGEDIALOG_H
 
 #include <QDialog>
 
 class WalletModel;
 
-namespace Ui {
-    class SignVerifyMessageDialog;
+namespace Ui
+{
+class SignVerifyMessageDialog;
 }
 
 class SignVerifyMessageDialog : public QDialog
@@ -18,22 +21,22 @@ class SignVerifyMessageDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit SignVerifyMessageDialog(QWidget *parent);
+    explicit SignVerifyMessageDialog(QWidget* parent);
     ~SignVerifyMessageDialog();
 
-    void setModel(WalletModel *model);
-    void setAddress_SM(const QString &address);
-    void setAddress_VM(const QString &address);
+    void setModel(WalletModel* model);
+    void setAddress_SM(const QString& address);
+    void setAddress_VM(const QString& address);
 
     void showTab_SM(bool fShow);
     void showTab_VM(bool fShow);
 
 protected:
-    bool eventFilter(QObject *object, QEvent *event);
+    bool eventFilter(QObject* object, QEvent* event);
 
 private:
-    Ui::SignVerifyMessageDialog *ui;
-    WalletModel *model;
+    Ui::SignVerifyMessageDialog* ui;
+    WalletModel* model;
 
 private slots:
     /* sign message */
@@ -48,4 +51,4 @@ private slots:
     void on_clearButton_VM_clicked();
 };
 
-#endif // SIGNVERIFYMESSAGEDIALOG_H
+#endif // BITCOIN_QT_SIGNVERIFYMESSAGEDIALOG_H

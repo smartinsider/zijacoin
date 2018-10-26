@@ -1,17 +1,20 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2018 The ZIJA developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ADDRESSBOOKPAGE_H
-#define ADDRESSBOOKPAGE_H
+#ifndef BITCOIN_QT_ADDRESSBOOKPAGE_H
+#define BITCOIN_QT_ADDRESSBOOKPAGE_H
 
 #include <QDialog>
 
 class AddressTableModel;
 class OptionsModel;
 
-namespace Ui {
-    class AddressBookPage;
+namespace Ui
+{
+class AddressBookPage;
 }
 
 QT_BEGIN_NAMESPACE
@@ -36,27 +39,27 @@ public:
 
     enum Mode {
         ForSelection, /**< Open address book to pick address */
-        ForEditing  /**< Open address book for editing */
+        ForEditing    /**< Open address book for editing */
     };
 
-    explicit AddressBookPage(Mode mode, Tabs tab, QWidget *parent);
+    explicit AddressBookPage(Mode mode, Tabs tab, QWidget* parent);
     ~AddressBookPage();
 
-    void setModel(AddressTableModel *model);
-    const QString &getReturnValue() const { return returnValue; }
+    void setModel(AddressTableModel* model);
+    const QString& getReturnValue() const { return returnValue; }
 
 public slots:
     void done(int retval);
 
 private:
-    Ui::AddressBookPage *ui;
-    AddressTableModel *model;
+    Ui::AddressBookPage* ui;
+    AddressTableModel* model;
     Mode mode;
     Tabs tab;
     QString returnValue;
-    QSortFilterProxyModel *proxyModel;
-    QMenu *contextMenu;
-    QAction *deleteAction; // to be able to explicitly disable it
+    QSortFilterProxyModel* proxyModel;
+    QMenu* contextMenu;
+    QAction* deleteAction; // to be able to explicitly disable it
     QString newAddressToSelect;
 
 private slots:
@@ -76,12 +79,12 @@ private slots:
     /** Set button states based on selected tab and selection */
     void selectionChanged();
     /** Spawn contextual menu (right mouse menu) for address book entry */
-    void contextualMenu(const QPoint &point);
+    void contextualMenu(const QPoint& point);
     /** New entry/entries were added to address table */
-    void selectNewAddress(const QModelIndex &parent, int begin, int /*end*/);
+    void selectNewAddress(const QModelIndex& parent, int begin, int /*end*/);
 
 signals:
     void sendCoins(QString addr);
 };
 
-#endif // ADDRESSBOOKPAGE_H
+#endif // BITCOIN_QT_ADDRESSBOOKPAGE_H
