@@ -137,7 +137,7 @@ public:
         nLastPOWBlock = 100;
         nModifierUpdateBlock = 1999999999;
         nZerocoinStartHeight = 250;
-        nZerocoinStartTime = 1536254000; // October 17, 2017 4:30:00 AM
+        nZerocoinStartTime = 1540548888; // October 17, 2017 4:30:00 AM
         nBlockEnforceSerialRange = 1999999999; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = 1999999999; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 1999999999; //First block that bad serials emerged
@@ -208,7 +208,7 @@ public:
         nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
         nRequiredAccumulation = 1;
         nDefaultSecurityLevel = 100; //full security level for accumulators
-        nZerocoinHeaderVersion = 3; //Block headers must be this version once zerocoin is active
+        nZerocoinHeaderVersion = 4; //Block headers must be this version once zerocoin is active
         nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zpiv to be stakable
 
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee
