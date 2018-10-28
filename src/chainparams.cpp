@@ -134,10 +134,10 @@ public:
         strDevpubkey = "028b4f493822fe835ec6d68396a87835f9f77723c13a2e2a3af386d3afe5fa758d";
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 1000;
+        nLastPOWBlock = 100;
         nModifierUpdateBlock = 1999999999;
-        nZerocoinStartHeight = 0;
-        nZerocoinStartTime = 1536253000; // October 17, 2017 4:30:00 AM
+        nZerocoinStartHeight = 250;
+        nZerocoinStartTime = 1536254000; // October 17, 2017 4:30:00 AM
         nBlockEnforceSerialRange = 1999999999; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = 1999999999; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 1999999999; //First block that bad serials emerged
