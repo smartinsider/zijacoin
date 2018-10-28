@@ -4170,8 +4170,8 @@ for example: alertnotify=echo %%s | mail -s "ZIJA Alert" admin@foo.com
         <translation>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</translation>
     </message>
     <message>
-        <source>(51992 could be used only on mainnet)</source>
-        <translation>(51992 could be used only on mainnet)</translation>
+        <source>(17999 could be used only on mainnet)</source>
+        <translation>(17999 could be used only on mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4182,8 +4182,8 @@ for example: alertnotify=echo %%s | mail -s "ZIJA Alert" admin@foo.com
         <translation>(default: 1)</translation>
     </message>
     <message>
-        <source>(must be 51992 for mainnet)</source>
-        <translation>(must be 51992 for mainnet)</translation>
+        <source>(must be 17999 for mainnet)</source>
+        <translation>(must be 17999 for mainnet)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>
