@@ -60,7 +60,7 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     ;
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1536062400, // * UNIX timestamp of last checkpoint block
+    1540548888, // * UNIX timestamp of last checkpoint block
     0,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
@@ -194,7 +194,7 @@ public:
         strSporkKey = "0404f577bf0f27840383286ed9ccb6de0331f434fc1367752e6b13a7d7ba53fb233aba934b70da91c71a5439d14c7362040a95f4d85da759def35b4dc24eaabcda";
         strSporkKeyOld = "0421fbe5c99cdf5ae07cacfc76e4fa6cd646ffba3cbaea8cb21d77a754ec684270104d60c0b561f7f9f82ba3a619487776ff5ca387d3225f51812f90655848b287";
         strObfuscationPoolDummyAddress = "D87q2gC9j6nNrnzCsg4aY6bHMLsT9nUhEw";
-        nStartMasternodePayments = 1403728576; //Wed, 25 Jun 2014 20:36:16 GMT
+        nStartMasternodePayments = 1540548888;
 
         /** Zerocoin */
         zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
