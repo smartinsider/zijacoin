@@ -235,10 +235,10 @@ QT_TRANSLATE_NOOP("zija-core", ""
 QT_TRANSLATE_NOOP("zija-core", ""
 "You must specify a masternodeprivkey in the configuration. Please see "
 "documentation for help."),
-QT_TRANSLATE_NOOP("zija-core", "(17999 could be used only on mainnet)"),
+QT_TRANSLATE_NOOP("zija-core", "(17009 could be used only on mainnet)"),
 QT_TRANSLATE_NOOP("zija-core", "(default: %s)"),
 QT_TRANSLATE_NOOP("zija-core", "(default: 1)"),
-QT_TRANSLATE_NOOP("zija-core", "(must be 17999 for mainnet)"),
+QT_TRANSLATE_NOOP("zija-core", "(must be 17009 for mainnet)"),
 QT_TRANSLATE_NOOP("zija-core", "<category> can be:"),
 QT_TRANSLATE_NOOP("zija-core", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("zija-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),

@@ -3732,8 +3732,8 @@ https://www.transifex.com/zija-project/zija-project-translations</translation>
         <translation>Você deve especificar uma masternodeprivkey na configuração. Favor verificar o manual para obter ajuda.</translation>
     </message>
     <message>
-        <source>(17999 could be used only on mainnet)</source>
-        <translation>(17999 could be used only on mainnet)</translation>
+        <source>(17009 could be used only on mainnet)</source>
+        <translation>(17009 could be used only on mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -3744,8 +3744,8 @@ https://www.transifex.com/zija-project/zija-project-translations</translation>
         <translation>(padrão: 1)</translation>
     </message>
     <message>
-        <source>(must be 17999 for mainnet)</source>
-        <translation>(deve ser 17999 para mainnet)</translation>
+        <source>(must be 17009 for mainnet)</source>
+        <translation>(deve ser 17009 para mainnet)</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
