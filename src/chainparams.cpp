@@ -130,8 +130,8 @@ public:
         nMaturity = 30;
         nMasternodeCountDrift = 20;
         nMaxMoneyOut = 1000000000 * COIN;
-        nMNCollateral = 600 * COIN;
-        strDevpubkey = "028b4f493822fe835ec6d68396a87835f9f77723c13a2e2a3af386d3afe5fa758d";
+        nMNCollateral = 1000 * COIN;
+        strDevpubkey = "fe6781f92c6d2940f10693acac95cb38cd7afc3109d430234bdc3427d69d1821";
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 100;
