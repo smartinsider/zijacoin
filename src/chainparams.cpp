@@ -131,7 +131,7 @@ public:
         nMasternodeCountDrift = 20;
         nMaxMoneyOut = 1000000000 * COIN;
         nMNCollateral = 1000 * COIN;
-        strDevpubkey = "HMCMAqkPVFtNUEUUevcxztR1rVUa7mnNw5";
+        strDevpubkey = "e77702d3198a2968829a1ca31abf8947cb94c44e";
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 100;
