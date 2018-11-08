@@ -129,8 +129,8 @@ public:
         nTargetSpacing = 1 * 60;  // ZIJA: 1 minute
         nMaturity = 30;
         nMasternodeCountDrift = 20;
-        nMaxMoneyOut = 1000000000 * COIN;
-        nMNCollateral = 1000 * COIN;
+        nMaxMoneyOut = 21000000 * COIN;
+        nMNCollateral = 2525 * COIN;
         strDevpubkey = "020270bfb5a3a91e6f90967329abcec9ba320e4067862d57078e6948481b3de7f8";
 
         /** Height or Time Based Activations **/

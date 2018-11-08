@@ -1815,34 +1815,16 @@ int64_t GetBlockValue(int nHeight)
     }
 
     int64_t nSubsidy = 0;
-    if (nHeight == 1) {
-        nSubsidy = 50000 * COIN;
-    } else if (nHeight < Params().LAST_POW_BLOCK() && nHeight > 1) {
-        if (nHeight < 21){
-	     nSubsidy = 50000 * COIN;
-	} else {
-	     nSubsidy = 1 * COIN;
-	}
-    } else if (nHeight >= Params().LAST_POW_BLOCK() && nHeight < 5000)
-        nSubsidy = 1 * COIN;
-    else if (nHeight >= 5000 && nHeight < 1050000)
-        nSubsidy = 8 * COIN;
-    else if (nHeight >= 1050000 && nHeight < 2100000)
-        nSubsidy = 6 * COIN;
-    else if (nHeight >= 2100000 && nHeight < 3150000)
-        nSubsidy = 4 * COIN;
-    else if (nHeight >= 3150000 && nHeight < 4200000)
-        nSubsidy = 2 * COIN;
-    else if (nHeight >= 4200000 && nHeight < 12600000)
-        nSubsidy = 1 * COIN;
-    else
-        nSubsidy = 1 * COIN;
-
-    int nBehalf = (nHeight - 12600000) / Params().SubsidyHalvingInterval(); // 12months after, the reward decrease as behalf
-
-    for (int i = 0; i < nBehalf; i++) {
-        nSubsidy = nSubsidy * 90 / 100;
+    if (nHeight < 51){ //PREMINE 1 MILLION
+        nSubsidy = 20000 * COIN;
+    } else {
+        nSubsidy = 8.0067 * COIN;
     }
+
+    //int nBehalf = (nHeight - 12600000) / Params().SubsidyHalvingInterval(); // 12months after, the reward decrease as behalf
+    //for (int i = 0; i < nBehalf; i++) {
+    //    nSubsidy = nSubsidy * 90 / 100;
+    //}
 
     return nSubsidy;
 }
@@ -1850,7 +1832,7 @@ int64_t GetBlockValue(int nHeight)
 int64_t GetDevFundPayment(int nHeight, int64_t blockValue)
 {
     int64_t ret_val = 0;
-    ret_val = blockValue * 7 / 100; //7% of the reward while POS
+    ret_val = blockValue * 15 / 100; //15% of the reward while POS
     return ret_val;
 }
 
@@ -2115,7 +2097,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     //         ret = 2 * COIN;
     // }
 
-    ret = blockValue * 62 / 100; //62% of the block reward
+    ret = blockValue * 60 / 100; //60% of the block reward
 
     return ret;
 }
