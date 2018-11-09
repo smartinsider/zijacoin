@@ -535,7 +535,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
             strHeader += rpc_user;
             strHeader += "\nrpcpassword=";
             strHeader += rpc_passwd;
-            strHeader += "\naddnode=dnsseed1.zija.io\naddnode=dnsseed2.zija.io\naddnode=dnsseed3.zija.io\naddnode=dnsseed4.zija.io\naddnode=dnsseed5.zija.io\naddnode=dnsseed6.zija.io\n";
+            strHeader += "\naddnode=seed1.zija.icu\naddnode=seed2.zija.icu\naddnode=seed3.zija.icu\n";
             strHeader += "txindex=1\nzijastake=1\n";
             fwrite(strHeader.c_str(), std::strlen(strHeader.c_str()), 1, configFile);
             fclose(configFile);
