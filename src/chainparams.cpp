@@ -135,7 +135,7 @@ public:
         strDevpubkey = "020270bfb5a3a91e6f90967329abcec9ba320e4067862d57078e6948481b3de7f8";
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 100;
+        nLastPOWBlock = 1000;
         nModifierUpdateBlock = 1999999999;
         nZerocoinStartHeight = 250;
         nZerocoinStartTime = 1540548888; // October 17, 2017 4:30:00 AM
@@ -182,7 +182,7 @@ public:
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
-        fMiningRequiresPeers = true; 
+        fMiningRequiresPeers = false; 
         fAllowMinDifficultyBlocks = false;
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
