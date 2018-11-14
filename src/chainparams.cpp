@@ -57,12 +57,12 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
       (1, uint256("00000086bda507690d143e49422e65f4544eb076e559074149fb7450526a6f5b"))
       (50, uint256("0000001a812963bcb03a60c75322aed9e218b3d9512e2d19788e73af72a91a94"))
       (100, uint256("00000013a7ac2cf6a751828d4e03bb99ab95f55654a4b880e3c041ecf57fc102"))
-      //(1000, uint256("000000547ff54eb43bc66bca8edf118fc179159caab08d297e02b1c5bf631b67"))
+      (505, uint256("0000002f68c3406f0535084822ab919750fb9e40417d9fa82367de0df1eecfa3"))
     ;
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1541766200, // * UNIX timestamp of last checkpoint block
-    104,    // * total number of transactions between genesis and last checkpoint
+    1542176770, // * UNIX timestamp of last checkpoint block
+    526,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
 };
@@ -135,7 +135,7 @@ public:
         strDevpubkey = "020270bfb5a3a91e6f90967329abcec9ba320e4067862d57078e6948481b3de7f8";
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 1000;
+        nLastPOWBlock = 460;
         nModifierUpdateBlock = 1999999999;
         nZerocoinStartHeight = 250;
         nZerocoinStartTime = 1540548888; // October 17, 2017 4:30:00 AM
