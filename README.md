@@ -3,6 +3,8 @@ ZIJA Core integration/staging tree
 
 https://zija.icu
 
+Explorer: https://explorer.zija.icu
+
 What is ZIJA?
 --------------
 
