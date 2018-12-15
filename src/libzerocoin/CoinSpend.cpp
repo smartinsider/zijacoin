@@ -9,7 +9,8 @@
  * @copyright  Copyright 2013 Ian Miers, Christina Garman and Matthew Green
  * @license    This project is released under the MIT license.
  **/
-// Copyright (c) 2017-2018 The ZIJA developers
+// Copyright (c) 2017-2018 The HUZU developers
+// Copyright (c) 2018 The ZIJA developers
 
 #include "CoinSpend.h"
 #include <iostream>
