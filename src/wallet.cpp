@@ -2,7 +2,6 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2017-2018 The HUZU developers
 // Copyright (c) 2018 The ZIJA developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -1319,13 +1318,14 @@ CAmount CWalletTx::GetLockedWatchOnlyCredit() const
         if (pwallet->IsSpent(hashTx, i)) continue;
 
         // Add locked coins
-        if (pwallet->IsLockedCoin(hashTx, i))
+        if (pwallet->IsLockedCoin(hashTx, i)) {
             nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
-        else if (fMasterNode && vout[i].nValue == Params().MasternodeC)
+        }
 
-        
+        // Add masternode collaterals which are handled likc locked coins
+        if (fMasterNode && vout[i].nValue == Params().MasternodeCollateral()) {
             nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
-        
+        }
 
         if (!MoneyRange(nCredit))
             throw std::runtime_error("CWalletTx::GetLockedCredit() : value out of range");
