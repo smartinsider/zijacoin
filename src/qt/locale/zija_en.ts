@@ -5438,6 +5438,11 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
+        <source>The HUZU Core developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>The ZIJA Core developers</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6742,6 +6747,11 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <message>
         <location line="+1"/>
         <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copyright (C) 2017-%i The HUZU Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -4240,6 +4240,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
         <translation>Die PIVX Core Entwickler</translation>
     </message>
     <message>
+        <source>The HUZU Core developers</source>
+        <translation>Die HUZU Core Entwickler</translation>
+    </message>
+    <message>
         <source>The ZIJA Core developers</source>
         <translation>Die ZIJA Core Entwickler</translation>
     </message>
@@ -5263,6 +5267,10 @@ Präge entweder höhere Stückelungen (damit weniger Eingaben benötigt werdenn)
     <message>
         <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
         <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2015-%i The HUZU Core Developers</source>
+        <translation>Copyright (C) 2015-%i The HUZU Core Developers</translation>
     </message>
     <message>
         <source>Copyright (C) %i The ZIJA Core Developers</source>

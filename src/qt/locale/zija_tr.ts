@@ -3920,6 +3920,10 @@ Ya daha yüksek mezhepleri daraltın (daha az girdi gereklidir) veya harcama mik
         <translation>The PIVX Core developers</translation>
     </message>
     <message>
+        <source>The HUZU Core developers</source>
+        <translation>The HUZU Core developers</translation>
+    </message>
+    <message>
         <source>The ZIJA Core developers</source>
         <translation>The ZIJA Core developers</translation>
     </message>

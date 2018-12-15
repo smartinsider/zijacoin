@@ -4248,6 +4248,10 @@ Enten mint højere nomineringer (så færre input er nødvendige) eller reducere
         <translation>PIVX "core" udviklerne</translation>
     </message>
     <message>
+        <source>The HUZU Core developers</source>
+        <translation>HUZU "core" udviklerne</translation>
+    </message>
+    <message>
         <source>The ZIJA Core developers</source>
         <translation>ZIJA "core" udviklerne</translation>
     </message>
@@ -5272,6 +5276,10 @@ Enten mint højere nomineringer (så færre input er nødvendige) eller reducere
     <message>
         <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
         <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2015-%i The HUZU Core Developers</source>
+        <translation>Copyright (C) 2015-%i The HUZU Core Developers</translation>
     </message>
     <message>
         <source>Copyright (C) %i The ZIJA Core Developers</source>

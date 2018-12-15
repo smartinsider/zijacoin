@@ -4237,6 +4237,10 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
         <translation>PIVX Core разработчици</translation>
     </message>
     <message>
+        <source>The HUZU Core developers</source>
+        <translation>HUZU Core разработчици</translation>
+    </message>
+    <message>
         <source>The ZIJA Core developers</source>
         <translation>ZIJA Core разработчици</translation>
     </message>
@@ -5256,6 +5260,10 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <message>
         <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
         <translation>Всички права запазени (c) 2015-%i PIVX Core разработчици</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2017-%i The HUZU Core Developers</source>
+        <translation>Всички права запазени (c) 2017-%i HUZU Core разработчици</translation>
     </message>
     <message>
         <source>Copyright (C) %i The ZIJA Core Developers</source>

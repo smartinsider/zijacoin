@@ -3296,6 +3296,10 @@ https://www.transifex.com/zija-project/zija-project-translations</translation>
         <translation>The PIVX Core developers</translation>
     </message>
     <message>
+        <source>The HUZU Core developers</source>
+        <translation>The HUZU Core developers</translation>
+    </message>
+    <message>
         <source>The ZIJA Core developers</source>
         <translation>The ZIJA Core developers</translation>
     </message>
@@ -4288,6 +4292,10 @@ for example: alertnotify=echo %%s | mail -s "ZIJA Alert" admin@foo.com
     <message>
         <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
         <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2015-%i The HUZU Core Developers</source>
+        <translation>Copyright (C) 2015-%i The HUZU Core Developers</translation>
     </message>
     <message>
         <source>Copyright (C) %i The ZIJA Core Developers</source>

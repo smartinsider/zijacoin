@@ -3131,6 +3131,10 @@ https://www.transifex.com/zija-project/zija-project-translations</translation>
         <translation>Os desenvolvedores do PIVX Core</translation>
     </message>
     <message>
+        <source>The HUZU Core developers</source>
+        <translation>Os desenvolvedores do HUZU Core</translation>
+    </message>
+    <message>
         <source>The ZIJA Core developers</source>
         <translation>Os desenvolvedores do ZIJA Core</translation>
     </message>
@@ -3798,6 +3802,10 @@ https://www.transifex.com/zija-project/zija-project-translations</translation>
     <message>
         <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
         <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do PIVX Core</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2017-%i The HUZU Core Developers</source>
+        <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do HUZU Core</translation>
     </message>
     <message>
         <source>Copyright (C) %i The ZIJA Core Developers</source>

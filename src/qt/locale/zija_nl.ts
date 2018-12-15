@@ -4249,6 +4249,10 @@ Ofwel het munten van hogere denominaties (dus minder invoer nodig) of het te bes
         <translation>De PIVX Kernontwikkelaars</translation>
     </message>
     <message>
+        <source>The HUZU Core developers</source>
+        <translation>De HUZU Kernontwikkelaars</translation>
+    </message>
+    <message>
         <source>The ZIJA Core developers</source>
         <translation>De ZIJA Kernontwikkelaars</translation>
     </message>
@@ -5272,6 +5276,10 @@ Ofwel het munten van hogere denominaties (dus minder invoer nodig) of het te bes
     <message>
         <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
         <translation>Copyright (C) 2015-%i The PIVX Kernontwikkelaars</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2015-%i The HUZU Core Developers</source>
+        <translation>Copyright (C) 2015-%i The HUZU Kernontwikkelaars</translation>
     </message>
     <message>
         <source>Copyright (C) %i The ZIJA Core Developers</source>
