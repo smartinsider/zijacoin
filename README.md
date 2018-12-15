@@ -97,11 +97,12 @@ CXXFLAGS="-DDEBUG_LOCKORDER -g") inserts run-time checks to keep track of which 
 are held, and adds warnings to the debug.log file if inconsistencies are detected.
 
 **Сopyright**
-Copyright (c) 2009-2010 Satoshi Nakamoto
-Copyright (c) 2009-2014 The Bitcoin developers
-Copyright (c) 2015-2017 The PIVX developers
-Copyright (c) 2017-2018 The HUZU developers
-Copyright (c) 2018 The ZIJA developers
-Distributed under the MIT/X11 software license, see the accompanying
-file COPYING or http://www.opensource.org/licenses/mit-license.php.
+------------
+  - Copyright (c) 2009-2010 Satoshi Nakamoto
+  - Copyright (c) 2009-2014 The Bitcoin developers
+  - Copyright (c) 2015-2017 The PIVX developers
+  - Copyright (c) 2017-2018 The HUZU developers
+  - Copyright (c) 2018 The ZIJA developers
+  - Distributed under the MIT/X11 software license, see the accompanying
+  - file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
