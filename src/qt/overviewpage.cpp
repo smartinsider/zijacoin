@@ -148,7 +148,6 @@ OverviewPage::OverviewPage(QWidget* parent) : QWidget(parent),
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
 
     // init "out of sync" warning labels
-    ui->labelWalletStatus->setText("(" + tr("out of sync") + ")");
     ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
 
     // start with displaying the "out of sync" warnings
@@ -240,38 +239,15 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelWatchLocked->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nWatchOnlyLockedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalWatchBalance, false, BitcoinUnits::separatorAlways));
 
-    // zZIJA labels
-    ui->labelzBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelzBalanceUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedZerocoinBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelzBalanceMature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, matureZerocoinBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelzBalanceImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureZerocoinBalance, false, BitcoinUnits::separatorAlways));
-
-    // Combined labels
-    ui->labelBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, availableTotalBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelTotalz->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, sumTotalBalance, false, BitcoinUnits::separatorAlways));
-
-    // Percentage labels
-    ui->labelZIJAPercent->setText(sPercentage);
-    ui->labelzZIJAPercent->setText(szPercentage);
 
     // Adjust bubble-help according to AutoMint settings
-    QString automintHelp = tr("Current percentage of zZIJA.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
     bool fEnableZeromint = GetBoolArg("-enablezeromint", false);
     int nZeromintPercentage = GetArg("-zeromintpercentage", 10);
-    if (fEnableZeromint) {
-        automintHelp += tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n";
-        automintHelp += tr("To disable AutoMint add 'enablezeromint=0' in zija.conf.");
-    }
-    else {
-        automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in zija.conf");
-    }
 
     // Only show most balances if they are non-zero for the sake of simplicity
     QSettings settings;
     bool settingShowAllBalances = !settings.value("fHideZeroBalances").toBool();
     bool showSumAvailable = settingShowAllBalances || sumTotalBalance != availableTotalBalance;
-    ui->labelBalanceTextz->setVisible(showSumAvailable);
-    ui->labelBalancez->setVisible(showSumAvailable);
     bool showZIJAAvailable = settingShowAllBalances || pivAvailableBalance != nTotalBalance;
     bool showWatchOnlyZIJAAvailable = watchOnlyBalance != nTotalWatchBalance;
     bool showZIJAPending = settingShowAllBalances || unconfirmedBalance != 0;
@@ -281,30 +257,10 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     bool showImmature = settingShowAllBalances || immatureBalance != 0;
     bool showWatchOnlyImmature = watchImmatureBalance != 0;
     bool showWatchOnly = nTotalWatchBalance != 0;
-    ui->labelBalance->setVisible(showZIJAAvailable || showWatchOnlyZIJAAvailable);
-    ui->labelBalanceText->setVisible(showZIJAAvailable || showWatchOnlyZIJAAvailable);
-    ui->labelWatchAvailable->setVisible(showZIJAAvailable && showWatchOnly);
-    ui->labelUnconfirmed->setVisible(showZIJAPending || showWatchOnlyZIJAPending);
-    ui->labelPendingText->setVisible(showZIJAPending || showWatchOnlyZIJAPending);
-    ui->labelWatchPending->setVisible(showZIJAPending && showWatchOnly);
-    ui->labelLockedBalance->setVisible(showZIJALocked || showWatchOnlyZIJALocked);
-    ui->labelLockedBalanceText->setVisible(showZIJALocked || showWatchOnlyZIJALocked);
-    ui->labelWatchLocked->setVisible(showZIJALocked && showWatchOnly);
-    ui->labelImmature->setVisible(showImmature || showWatchOnlyImmature); // for symmetry reasons also show immature label when the watch-only one is shown
-    ui->labelImmatureText->setVisible(showImmature || showWatchOnlyImmature);
-    ui->labelWatchImmature->setVisible(showImmature && showWatchOnly); // show watch-only immature balance
     bool showzZIJAAvailable = settingShowAllBalances || zerocoinBalance != matureZerocoinBalance;
     bool showzZIJAnconfirmed = settingShowAllBalances || unconfirmedZerocoinBalance != 0;
     bool showzZIJAImmature = settingShowAllBalances || immatureZerocoinBalance != 0;
-    ui->labelzBalanceMature->setVisible(showzZIJAAvailable);
-    ui->labelzBalanceMatureText->setVisible(showzZIJAAvailable);
-    ui->labelzBalanceUnconfirmed->setVisible(showzZIJAnconfirmed);
-    ui->labelzBalanceUnconfirmedText->setVisible(showzZIJAnconfirmed);
-    ui->labelzBalanceImmature->setVisible(showzZIJAImmature);
-    ui->labelzBalanceImmatureText->setVisible(showzZIJAImmature);
     bool showPercentages = ! (zerocoinBalance == 0 && nTotalBalance == 0);
-    ui->labelZIJAPercent->setVisible(showPercentages);
-    ui->labelzZIJAPercent->setVisible(showPercentages);
 
     static int cachedTxLocks = 0;
 
@@ -402,6 +358,5 @@ void OverviewPage::updateAlerts(const QString& warnings)
 
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
-    ui->labelWalletStatus->setVisible(fShow);
     ui->labelTransactionsStatus->setVisible(fShow);
 }
